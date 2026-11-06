@@ -48,13 +48,13 @@
     </td>
     <td>
       <h3><a href="./ml/telco-churn-prediction">Telco Churn: прогноз оттока клиентов</a></h3>
-      <p>Бинарная классификация на 7043 клиентах: EDA, бейзлайны, Random Forest, интерпретация через permutation importance и SHAP.</p>
+      <p>Полный цикл ML-проекта: пайплайн на scikit-learn, CLI для обучения и скоринга, SHAP, тесты и CI.</p>
       <p>
         <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
         <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit-learn">
         <img src="https://img.shields.io/badge/SHAP-0B7285?style=flat-square" alt="SHAP">
       </p>
-      <p><b>Результат:</b> лучший Recall 0,79 у дерева решений, главный фактор оттока: помесячный контракт.</p>
+      <p><b>Результат на тесте:</b> находит 81% уходящих клиентов, из всех предупреждений верные 54%. Главный фактор оттока: помесячный контракт.</p>
     </td>
   </tr>
 </table>

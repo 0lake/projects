@@ -13,13 +13,13 @@
     </td>
     <td>
       <h3><a href="./telco-churn-prediction">Telco Churn: прогноз оттока клиентов</a></h3>
-      <p>Бинарная классификация на 7043 клиентах: EDA, бейзлайны, Random Forest с подбором гиперпараметров, интерпретация через permutation importance и SHAP.</p>
+      <p>Полный цикл: пайплайн на scikit-learn, выбор модели по PR-AUC, порог под целевой Recall, SHAP, CLI для обучения и скоринга, тесты и CI.</p>
       <p>
         <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
         <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit-learn">
         <img src="https://img.shields.io/badge/SHAP-0B7285?style=flat-square" alt="SHAP">
       </p>
-      <p><b>Лучший Recall:</b> 0,79 у дерева решений при Accuracy 0,74.</p>
+      <p><b>Результат на тесте:</b> Recall 0,81, Precision 0,54, ROC-AUC 0,855.</p>
     </td>
   </tr>
 </table>

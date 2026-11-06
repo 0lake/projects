@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "selected_model": "random_forest",
+  "best_params": {
+    "n_estimators": 800,
+    "min_samples_leaf": 10,
+    "max_features": 0.5,
+    "max_depth": 8
+  },
+  "target_recall": 0.8,
+  "threshold": 0.47041538616160233,
+  "n_train": 5634,
+  "n_test": 1409,
+  "test": {
+    "threshold": 0.47041538616160233,
+    "recall": 0.8074866310160428,
+    "precision": 0.5412186379928315,
+    "f1": 0.648068669527897,
+    "accuracy": 0.7672107877927609,
+    "tn": 779,
+    "fp": 256,
+    "fn": 72,
+    "tp": 302,
+    "flagged_share": 0.3960255500354862,
+    "roc_auc": 0.8550944224857268,
+    "pr_auc": 0.6674386723542677,
+    "capture_top_20_percent": 0.5026737967914439,
+    "baseline_churn_rate": 0.2654364797728886
+  },
+  "comparison": [
+    {
+      "model": "dummy",
+      "cv_roc_auc": 0.4999,
+      "cv_pr_auc": 0.2653,
+      "test_recall_at_0.5": 0.0,
+      "test_precision_at_0.5": 0.0,
+      "test_f1_at_0.5": 0.0,
+      "test_accuracy_at_0.5": 0.7346
+    },
+    {
+      "model": "logistic_regression",
+      "cv_roc_auc": 0.8587,
+      "cv_pr_auc": 0.6763,
+      "test_recall_at_0.5": 0.7834,
+      "test_precision_at_0.5": 0.5105,
+      "test_f1_at_0.5": 0.6181,
+      "test_accuracy_at_0.5": 0.7431
+    },
+    {
+      "model": "decision_tree",
+      "cv_roc_auc": 0.8423,
+      "cv_pr_auc": 0.636,
+      "test_recall_at_0.5": 0.7914,
+      "test_precision_at_0.5": 0.5034,
+      "test_f1_at_0.5": 0.6154,
+      "test_accuracy_at_0.5": 0.7374
+    },
+    {
+      "model": "random_forest",
+      "cv_roc_auc": 0.8625,
+      "cv_pr_auc": 0.6786,
+      "test_recall_at_0.5": 0.7781,
+      "test_precision_at_0.5": 0.5429,
+      "test_f1_at_0.5": 0.6396,
+      "test_accuracy_at_0.5": 0.7672
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "cv_roc_auc": 0.8603,
+      "cv_pr_auc": 0.6765,
+      "test_recall_at_0.5": 0.7888,
+      "test_precision_at_0.5": 0.5175,
+      "test_f1_at_0.5": 0.625,
+      "test_accuracy_at_0.5": 0.7488
+    }
+  ],
+  "top_permutation_features": {
+    "Contract": 0.1048,
+    "Tenure_Months": 0.0645,
+    "Internet_Service": 0.0505,
+    "Dependents": 0.0485,
+    "Total_Charges": 0.041,
+    "Online_Security": 0.0261,
+    "Tech_Support": 0.014,
+    "Monthly_Charges": 0.0085
+  },
+  "shap": true
+}

@@ -27,3 +27,8 @@ tbank-intensive/analysis/data/*.csv
 tbank-intensive/analysis/data/*.xlsx
 ml/telco-churn-prediction/data/*.xlsx
 ml/telco-churn-prediction/data/*.csv
+
+# Python
+*.egg-info/
+.pytest_cache/
+ml/telco-churn-prediction/models/
