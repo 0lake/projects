@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/banner.svg" alt="Health insurance rate modeling" width="100%"></p>
+<p align="center"><img src="assets/banner.svg?v=7" alt="Health insurance rate modeling" width="100%"></p>
 
 # Health Insurance Rate Modeling
 

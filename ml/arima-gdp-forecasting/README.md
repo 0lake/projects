@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="ARIMA family for US GDP forecasting" width="100%">
+<img src="assets/banner.svg?v=7" alt="ARIMA family for US GDP forecasting" width="100%">
 
 <br>
 
