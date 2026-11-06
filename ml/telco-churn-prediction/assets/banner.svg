@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Telco Churn: predicting customer churn">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1117"/>
+      <stop offset="1" stop-color="#102127"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="85%" cy="40%" r="55%">
+      <stop offset="0" stop-color="#2DD4BF" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#2DD4BF" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="320" rx="18" fill="url(#bg)"/>
+  <rect width="1280" height="320" rx="18" fill="url(#grid)"/>
+  <rect width="1280" height="320" rx="18" fill="url(#glow)"/>
+
+  <!-- churn donut: 26.5% -->
+  <g transform="translate(1000 160)">
+    <circle r="80" fill="none" stroke="#ffffff" stroke-opacity="0.09" stroke-width="26"/>
+    <circle r="80" fill="none" stroke="url(#ac)" stroke-width="26" stroke-linecap="round"
+            stroke-dasharray="133.2 502.7" transform="rotate(-90)"/>
+    <text y="10" text-anchor="middle" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="38" font-weight="800" fill="#ffffff">26.5%</text>
+    <text y="40" text-anchor="middle" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="16" fill="#8aa0a8">churn rate</text>
+  </g>
+
+  <rect x="72" y="70" width="72" height="6" rx="3" fill="url(#ac)"/>
+  <text x="72" y="130" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#2DD4BF" letter-spacing="3">MACHINE LEARNING  ·  CLASSIFICATION</text>
+  <text x="72" y="196" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="62" font-weight="800" fill="#ffffff" letter-spacing="-1">Telco Churn</text>
+  <text x="72" y="244" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="28" font-weight="500" fill="#c3cdd2">predicting which customers are about to leave</text>
+  <text x="72" y="284" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="19" fill="#7e9098">EDA  ·  baselines  ·  Random Forest  ·  SHAP</text>
+</svg>

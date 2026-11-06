@@ -25,3 +25,5 @@ models/*.bin
 # Учебные датасеты Т-Банка
 tbank-intensive/analysis/data/*.csv
 tbank-intensive/analysis/data/*.xlsx
+ml/telco-churn-prediction/data/*.xlsx
+ml/telco-churn-prediction/data/*.csv

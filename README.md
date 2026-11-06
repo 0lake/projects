@@ -14,7 +14,7 @@
 
 ## 👋 Привет, я Олег
 
-Учусь на 4 курсе бизнес-информатики в Университете ИТМО. Занимаюсь продуктовой и системной аналитикой: проверяю гипотезы на данных, пишу требования, проектирую API и планирую A/B-тесты. Здесь собраны мои проекты.
+Учусь на 4 курсе бизнес-информатики в Университете ИТМО. Занимаюсь продуктовой и системной аналитикой: проверяю гипотезы на данных, пишу требования, проектирую API и планирую A/B-тесты. Здесь собраны мои проекты: продуктовая аналитика и машинное обучение.
 
 ## 🚀 Проекты
 
@@ -39,14 +39,39 @@
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./ml/telco-churn-prediction">
+        <img src="ml/telco-churn-prediction/assets/banner.svg" alt="Telco Churn" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./ml/telco-churn-prediction">Telco Churn: прогноз оттока клиентов</a></h3>
+      <p>Бинарная классификация на 7043 клиентах: EDA, бейзлайны, Random Forest, интерпретация через permutation importance и SHAP.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit-learn">
+        <img src="https://img.shields.io/badge/SHAP-0B7285?style=flat-square" alt="SHAP">
+      </p>
+      <p><b>Результат:</b> лучший Recall 0,79 у дерева решений, главный фактор оттока: помесячный контракт.</p>
+    </td>
+  </tr>
+</table>
+
 | Раздел | О чем | Статус |
 |---|---|---|
 | [🏦 tbank-intensive](./tbank-intensive) | Продуктовая и системная аналитика: анализ данных, CustDev, PRD, API, A/B-тест | ✅ готово |
 | [📊 data-analysis](./data-analysis) | Исследование данных, визуализация, статистика | 🛠 пополняется |
-| [🤖 ml](./ml) | Классификация, регрессия, оценка моделей | 🛠 пополняется |
+| [🤖 ml](./ml) | Классификация, оценка и интерпретация моделей | ✅ есть проект |
 
 ## 🧰 Инструменты
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![SHAP](https://img.shields.io/badge/SHAP-0B7285?style=for-the-badge)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
 ![ggplot2](https://img.shields.io/badge/ggplot2-1F77B4?style=for-the-badge)
 ![dplyr](https://img.shields.io/badge/dplyr-F26B21?style=for-the-badge)
@@ -61,6 +86,7 @@ projects/
 ├── tbank-intensive/     # проект с интенсива Т-Банка
 ├── data-analysis/       # анализ данных
 ├── ml/                  # машинное обучение
+│   └── telco-churn-prediction/
 ├── _template/           # шаблон для нового проекта
 └── README.md
 ```
