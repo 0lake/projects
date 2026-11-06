@@ -1,6 +1,6 @@
 # Data Engineering
 
-Проекты про движение данных: загрузка, преобразование, хранение и сбор из внешних источников.
+Проекты про движение данных: загрузка, преобразование, хранение, проектирование баз данных и сбор из внешних источников.
 
 <table>
   <tr>
@@ -37,6 +37,25 @@
         <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
         <img src="https://img.shields.io/badge/BeautifulSoup-4B8BBE?style=flat-square" alt="BeautifulSoup">
         <img src="https://img.shields.io/badge/requests-2C5BB4?style=flat-square" alt="requests">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./postgresql-cave-schema">
+        <img src="postgresql-cave-schema/assets/banner.svg?v=11" alt="Cave Schema: проектирование базы данных на PostgreSQL" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./postgresql-cave-schema">Cave Schema: проектирование базы данных на PostgreSQL</a></h3>
+      <p>От текста до работающей схемы: инфологическая и даталогическая модели, ограничения целостности, нормализация до BCNF, триггер на PL/pgSQL с тестами и разбор планов запросов с индексами (10,5 мс до 1,1 мс). CI проверяет схему на живом PostgreSQL.</p>
+      <p>
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+        <img src="https://img.shields.io/badge/PL%2FpgSQL-336791?style=flat-square" alt="PL/pgSQL">
+        <img src="https://img.shields.io/badge/Mermaid-FF3670?style=flat-square&logo=mermaid&logoColor=white" alt="Mermaid">
       </p>
     </td>
   </tr>

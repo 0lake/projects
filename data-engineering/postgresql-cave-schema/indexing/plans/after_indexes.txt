@@ -1,0 +1,52 @@
+                                                                   QUERY PLAN                                                                   
+------------------------------------------------------------------------------------------------------------------------------------------------
+ Hash Join  (cost=221.80..454.42 rows=6 width=24) (actual time=0.905..1.093 rows=4 loops=1)
+   Hash Cond: (s.person_id = p.id)
+   Buffers: shared hit=228 read=7
+   ->  Bitmap Heap Scan on sessions s  (cost=5.00..237.42 rows=75 width=14) (actual time=0.039..0.232 rows=76 loops=1)
+         Recheck Cond: (session_on = '2004-01-17'::date)
+         Heap Blocks: exact=75
+         Buffers: shared hit=75 read=3
+         ->  Bitmap Index Scan on idx_sessions_date_person  (cost=0.00..4.98 rows=75 width=0) (actual time=0.026..0.026 rows=76 loops=1)
+               Index Cond: (session_on = '2004-01-17'::date)
+               Buffers: shared read=3
+   ->  Hash  (cost=195.61..195.61 rows=1695 width=18) (actual time=0.833..0.833 rows=1695 loops=1)
+         Buckets: 2048  Batches: 1  Memory Usage: 103kB
+         Buffers: shared hit=153 read=4
+         ->  Bitmap Heap Scan on people p  (cost=21.42..195.61 rows=1695 width=18) (actual time=0.071..0.548 rows=1695 loops=1)
+               Recheck Cond: ((last_name)::text = 'Петров'::text)
+               Heap Blocks: exact=153
+               Buffers: shared hit=153 read=4
+               ->  Bitmap Index Scan on idx_people_last_name  (cost=0.00..21.00 rows=1695 width=0) (actual time=0.055..0.055 rows=1695 loops=1)
+                     Index Cond: ((last_name)::text = 'Петров'::text)
+                     Buffers: shared read=4
+ Planning:
+   Buffers: shared hit=274 read=6
+ Planning Time: 0.620 ms
+ Execution Time: 1.144 ms
+(24 rows)
+
+                                                              QUERY PLAN                                                              
+--------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=1.00..20.04 rows=1 width=20) (actual time=0.030..0.032 rows=1 loops=1)
+   Buffers: shared hit=14
+   ->  Nested Loop  (cost=0.71..16.75 rows=1 width=20) (actual time=0.015..0.015 rows=1 loops=1)
+         Buffers: shared hit=7
+         ->  Index Scan using records_pkey on records r  (cost=0.42..8.44 rows=1 width=4) (actual time=0.010..0.011 rows=1 loops=1)
+               Index Cond: (id = 149007)
+               Buffers: shared hit=4
+         ->  Index Scan using people_pkey on people p  (cost=0.29..8.31 rows=1 width=16) (actual time=0.002..0.002 rows=1 loops=1)
+               Index Cond: (id = r.person_id)
+               Filter: ((last_name)::text = 'Афанасьев'::text)
+               Buffers: shared hit=3
+   ->  Index Scan using idx_sessions_person on sessions s  (cost=0.29..3.28 rows=1 width=8) (actual time=0.015..0.015 rows=1 loops=1)
+         Index Cond: (person_id = p.id)
+         Filter: (session_on = '2004-01-17'::date)
+         Rows Removed by Filter: 4
+         Buffers: shared hit=7
+ Planning:
+   Buffers: shared hit=73 read=4
+ Planning Time: 0.341 ms
+ Execution Time: 0.045 ms
+(20 rows)
+

@@ -142,6 +142,25 @@
 <table>
   <tr>
     <td width="46%">
+      <a href="./data-engineering/postgresql-cave-schema">
+        <img src="data-engineering/postgresql-cave-schema/assets/banner.svg?v=11" alt="Cave Schema: проектирование базы данных на PostgreSQL" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./data-engineering/postgresql-cave-schema">Cave Schema: проектирование базы данных на PostgreSQL</a></h3>
+      <p>От текста до работающей схемы: инфологическая и даталогическая модели, ограничения целостности, нормализация до BCNF, триггер на PL/pgSQL с тестами и разбор планов запросов с индексами (10,5 мс до 1,1 мс). CI проверяет схему на живом PostgreSQL.</p>
+      <p>
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+        <img src="https://img.shields.io/badge/PL%2FpgSQL-336791?style=flat-square" alt="PL/pgSQL">
+        <img src="https://img.shields.io/badge/Mermaid-FF3670?style=flat-square&logo=mermaid&logoColor=white" alt="Mermaid">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
       <a href="./data-analysis/movies-cleaning-clustering">
         <img src="data-analysis/movies-cleaning-clustering/assets/banner.svg?v=11" alt="Фильмы: очистка на R и сравнение алгоритмов кластеризации" width="100%">
       </a>
@@ -180,7 +199,7 @@
 |---|---|
 | [tbank-intensive](./tbank-intensive) | Бизнес-продуктовая и системная аналитика: анализ данных, CustDev, PRD, API, A/B-тест |
 | [data-analysis](./data-analysis) | Исследование данных, сетевой анализ, визуализация |
-| [data-engineering](./data-engineering) | ETL на Spark, PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
+| [data-engineering](./data-engineering) | ETL на Spark, проектирование БД на PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
 | [ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей |
 
 ## Инструменты
@@ -194,6 +213,7 @@ projects/
 ├── tbank-intensive/     # проект с интенсива Т-Банка
 ├── data-engineering/    # ETL и сбор данных
 │   ├── spark-etl-star-schema/
+│   ├── postgresql-cave-schema/
 │   └── web-scraping-goat-breeds/
 ├── data-analysis/       # анализ данных
 │   ├── resident-evil-network/

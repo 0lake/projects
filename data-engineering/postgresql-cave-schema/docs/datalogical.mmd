@@ -1,0 +1,77 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Inter, Segoe UI, sans-serif", "fontSize": "14px", "primaryColor": "#e8f1fb", "primaryBorderColor": "#2f5d8a", "primaryTextColor": "#0f1b2d", "lineColor": "#6b7f99"}}}%%
+erDiagram
+    location {
+        SERIAL location_id PK
+        VARCHAR_100 name "UNIQUE, NOT NULL"
+        POINT coordinates
+    }
+    cave {
+        SERIAL cave_id PK
+        INTEGER size "CHECK >= 0"
+        INTEGER age "CHECK >= 0"
+        INTEGER depth "CHECK >= 0"
+    }
+    gallery {
+        SERIAL gallery_id PK
+        INTEGER size "CHECK >= 0"
+        VARCHAR_100 carving_technique
+        INTEGER cave_id FK "UNIQUE, NOT NULL"
+    }
+    human {
+        SERIAL human_id PK
+        VARCHAR_50 name
+        INTEGER age "CHECK 0..120"
+        gender_enum gender
+        VARCHAR_100 emotion
+        INTEGER current_location FK
+        VARCHAR_30 status "CHECK IN (...)"
+    }
+    penguin {
+        SERIAL penguin_id PK
+        VARCHAR_100 habitat
+        INTEGER population_size "CHECK >= 0"
+        VARCHAR_100 behaviour
+        INTEGER current_location FK
+        VARCHAR_30 status "CHECK IN (...)"
+    }
+    creature {
+        SERIAL creature_id PK
+        VARCHAR_100 name
+        INTEGER speed "CHECK 0..300000"
+        TEXT description
+        INTEGER current_location FK
+        VARCHAR_30 status "CHECK IN (...)"
+    }
+    fog {
+        SERIAL fog_id PK
+        INTEGER visibility "CHECK >= 0"
+        INTEGER density "CHECK 0..10"
+        INTERVAL duration_time
+    }
+    explore {
+        INTEGER cave_id PK, FK
+        INTEGER human_id PK, FK
+    }
+    chase {
+        INTEGER creature_id PK, FK
+        INTEGER penguin_id PK, FK
+        INTEGER human_id PK, FK
+    }
+    blur {
+        INTEGER fog_id PK, FK
+        INTEGER penguin_id PK, FK
+        INTEGER human_id PK, FK
+    }
+
+    location ||--o{ human    : "current_location"
+    location ||--o{ penguin  : "current_location"
+    location ||--o{ creature : "current_location"
+    cave     ||--o| gallery  : "cave_id"
+    cave     ||--o{ explore  : ""
+    human    ||--o{ explore  : ""
+    creature ||--o{ chase    : ""
+    penguin  ||--o{ chase    : ""
+    human    ||--o{ chase    : ""
+    fog      ||--o{ blur     : ""
+    penguin  ||--o{ blur     : ""
+    human    ||--o{ blur     : ""

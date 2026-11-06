@@ -1,0 +1,48 @@
+name: postgresql-cave tests
+
+on:
+  push:
+    paths:
+      - "data-engineering/postgresql-cave-schema/**"
+      - ".github/workflows/postgresql-cave-ci.yml"
+  pull_request:
+    paths:
+      - "data-engineering/postgresql-cave-schema/**"
+
+jobs:
+  sql:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: cave
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: cave
+    defaults:
+      run:
+        working-directory: data-engineering/postgresql-cave-schema
+    steps:
+      - uses: actions/checkout@v4
+      - name: Schema, seed, trigger, denormalization
+        run: |
+          for f in sql/01_schema.sql sql/02_seed.sql sql/03_status_trigger.sql sql/04_denormalization.sql; do
+            psql -v ON_ERROR_STOP=1 -q -f "$f"
+          done
+      - name: Trigger and constraint tests
+        run: psql -v ON_ERROR_STOP=1 -f sql/05_tests.sql
+      - name: Indexing scripts
+        run: |
+          psql -v ON_ERROR_STOP=1 -q -f indexing/00_synthetic_schema.sql
+          psql -v ON_ERROR_STOP=1 -q -f indexing/02_indexes.sql
+          psql -v ON_ERROR_STOP=1 -q -f indexing/01_queries.sql

@@ -1,0 +1,29 @@
+%%{init: {"theme": "base", "flowchart": {"curve": "basis", "nodeSpacing": 55, "rankSpacing": 70}, "themeVariables": {"fontFamily": "Inter, Segoe UI, sans-serif", "fontSize": "15px", "lineColor": "#6b7f99", "primaryTextColor": "#0f1b2d"}}}%%
+flowchart LR
+    classDef entity fill:#e8f1fb,stroke:#2f5d8a,stroke-width:2px,color:#0f1b2d
+    classDef assoc fill:#fff4d6,stroke:#b8860b,stroke-width:2px,color:#4a3500
+    classDef place fill:#e6f6ef,stroke:#2c8a62,stroke-width:2px,color:#0f3d2a
+
+    FOG["<b>Fog</b><br/>visibility<br/>density<br/>duration_time"]:::entity
+    BLUR{{"<b>Blur</b><br/>укрытие туманом"}}:::assoc
+    PEN["<b>Penguin</b><br/>habitat<br/>population_size<br/>behaviour<br/>status"]:::entity
+    HUM["<b>Human</b><br/>name<br/>age<br/>gender<br/>emotion<br/>status"]:::entity
+    CHASE{{"<b>Chase</b><br/>погоня"}}:::assoc
+    CRE["<b>Creature</b><br/>name<br/>speed<br/>description<br/>status"]:::entity
+    LOC["<b>Location</b><br/>name<br/>coordinates"]:::place
+    EXP{{"<b>Explore</b><br/>исследование"}}:::assoc
+    CAVE["<b>Cave</b><br/>size<br/>age<br/>depth"]:::entity
+    GAL["<b>Gallery</b><br/>size<br/>carving_technique"]:::entity
+
+    FOG -- "N" --- BLUR
+    BLUR -- "N" --- PEN
+    BLUR -- "N" --- HUM
+    CRE -- "N" --- CHASE
+    CHASE -- "N" --- PEN
+    CHASE -- "N" --- HUM
+    HUM -- "N" --- EXP
+    EXP -- "M" --- CAVE
+    CAVE -- "1 : 1" --- GAL
+    LOC -- "1 : N" --- HUM
+    LOC -- "1 : N" --- PEN
+    LOC -- "1 : N" --- CRE
