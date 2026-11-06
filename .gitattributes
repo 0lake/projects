@@ -1,0 +1,3 @@
+# GitHub Linguist: тяжелые сгенерированные отчеты и ноутбуки с выводами не считаем языком проекта
+*.html linguist-generated
+*.ipynb linguist-documentation
