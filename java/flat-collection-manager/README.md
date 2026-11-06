@@ -24,12 +24,13 @@
 2. [Архитектура](#архитектура)
 3. [Как обрабатывается запрос](#как-обрабатывается-запрос)
 4. [База данных](#база-данных)
-5. [Команды](#команды)
-6. [Протокол](#протокол)
-7. [Безопасность и ограничения](#безопасность-и-ограничения)
-8. [Тесты](#тесты)
-9. [Как запустить](#как-запустить)
-10. [Структура](#структура)
+5. [Модель данных и протокол](#модель-данных-и-протокол)
+6. [Команды](#команды)
+7. [Протокол](#протокол)
+8. [Безопасность и ограничения](#безопасность-и-ограничения)
+9. [Тесты](#тесты)
+10. [Как запустить](#как-запустить)
+11. [Структура](#структура)
 
 ## Что умеет
 
@@ -129,34 +130,7 @@ sequenceDiagram
 
 ## База данных
 
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Inter, Segoe UI, sans-serif", "fontSize": "14px", "primaryColor": "#e8f1fb", "primaryBorderColor": "#2f5d8a", "lineColor": "#6b7f99"}}}%%
-erDiagram
-    users ||--o{ flats : "owner"
-    users {
-        varchar login PK
-        varchar salt
-        varchar password_hash
-        timestamptz created_at
-    }
-    flats {
-        bigint id PK
-        text name
-        bigint coord_x
-        real coord_y
-        timestamptz creation_date
-        integer area "NULL допустим"
-        integer number_of_rooms
-        integer height
-        real kitchen_area
-        varchar view
-        text house_name
-        integer house_year
-        bigint house_flats_on_floor
-        bigint house_lifts
-        varchar owner FK
-    }
-```
+<p align="center"><img src="docs/er.svg" alt="Схема базы данных: таблицы users и flats, связь по владельцу" width="100%"></p>
 
 Схема лежит в [`server/src/main/resources/schema.sql`](server/src/main/resources/schema.sql) и применяется при каждом запуске сервера, поэтому скрипт идемпотентен (`IF NOT EXISTS`).
 
@@ -167,6 +141,12 @@ erDiagram
 - Все запросы выполняются через `PreparedStatement`, строки в SQL не склеиваются.
 
 Модель из дома, вынесенная в плоские столбцы `house_*`, это упрощение: дом не отдельная сущность. Для этой задачи достаточно, но если дома понадобится редактировать отдельно, их нужно вынести в таблицу `houses`.
+
+## Модель данных и протокол
+
+Квартира описана двумя записями: `FlatDraft` это то, что вводит пользователь, `Flat` добавляет то, что назначает сервер (`id`, дата создания, владелец). Из-за этого клиент физически не может прислать чужого владельца или подменить дату: в `Request` едет только `FlatDraft`.
+
+<p align="center"><img src="docs/model.svg" alt="Модель и протокол: Request, Response, Flat, FlatDraft, Coordinates, House и перечисления" width="100%"></p>
 
 ## Команды
 
@@ -311,7 +291,7 @@ flat-collection-manager/
 │       ├── io/            консоль и файл скрипта
 │       └── net/           NioServerConnection
 ├── scripts/demo.txt       демонстрационный скрипт
-├── docs/protocol.md       описание протокола
+├── docs/                  protocol.md, схемы (er.svg, model.svg) и их исходник er.mmd
 ├── docker-compose.yml     PostgreSQL для запуска
 └── build.gradle, settings.gradle, gradlew
 ```

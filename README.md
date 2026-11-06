@@ -8,6 +8,8 @@
 [![Resume](https://img.shields.io/badge/Resume-Google%20Drive-c4561f?style=flat-square&labelColor=ffc857&logo=googledrive&logoColor=2a1208)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
 [![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-c4561f?style=flat-square&labelColor=ffc857)](https://itmo.ru)
 
+<p align="center"><a href="#проекты"><b>Проекты</b></a> · <a href="#инструменты"><b>Инструменты</b></a> · <a href="#структура"><b>Структура</b></a> · <a href="#связаться"><b>Связаться</b></a></p>
+
 </div>
 
 ---

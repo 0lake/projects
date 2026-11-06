@@ -45,130 +45,15 @@
 
 Сущности, их атрибуты и связи без привязки к СУБД. Жёлтым выделены связи, у которых есть собственные атрибуты (отзыв несёт оценку и дату).
 
-```mermaid
-%%{init: {"theme": "base", "flowchart": {"curve": "basis", "nodeSpacing": 50, "rankSpacing": 80}, "themeVariables": {"fontFamily": "Inter, Segoe UI, sans-serif", "fontSize": "15px", "lineColor": "#6b7f99", "primaryTextColor": "#0f1b2d"}}}%%
-flowchart LR
-    classDef entity fill:#e8f1fb,stroke:#2f5d8a,stroke-width:2px,color:#0f1b2d
-    classDef assoc fill:#fff4d6,stroke:#b8860b,stroke-width:2px,color:#4a3500
-
-    USER["<b>User</b><br/>nickname<br/>email<br/>phone_number<br/>age<br/>status<br/>role"]:::entity
-    SUB["<b>Subscription</b><br/>plan<br/>price<br/>terms<br/>status"]:::entity
-    AUTH["<b>Author</b><br/>name<br/>description<br/>nationality<br/>scopus_id<br/>total_articles<br/>rating"]:::entity
-    ART["<b>Article</b><br/>title<br/>content<br/>publication_date<br/>views<br/>status<br/>category<br/>rating"]:::entity
-    TAG["<b>Tag</b><br/>name<br/>colour<br/>description"]:::entity
-    REV{{"<b>Review</b><br/>rating, content,<br/>date"}}:::assoc
-    FAV{{"<b>Favorite</b>"}}:::assoc
-    SRCH["<b>SearchQuery</b><br/>query_text<br/>searched_at"]:::entity
-
-    USER -- "1 : 0..1" --- SUB
-    USER -- "1 : 0..1" --- AUTH
-    AUTH -- "N : M (авторство)" --- ART
-    ART -- "N : M" --- TAG
-    USER -- "1" --- REV
-    REV -- "N" --- ART
-    USER -- "1" --- FAV
-    FAV -- "N" --- ART
-    USER -- "1 : N" --- SRCH
-```
+<p align="center"><img src="docs/infological.svg" alt="Инфологическая модель: сущности, связи и их кратность" width="100%"></p>
 
 ## Даталогическая модель
 
 Реализация в PostgreSQL: типы данных, ключи, ограничения. Исходная учебная модель при реализации была доработана: теги вынесены в справочник, подписка привязана к пользователю, отзыв получил оценку. Таблица всех изменений с причинами: [`docs/design.md`](docs/design.md).
 
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Inter, Segoe UI, sans-serif", "fontSize": "14px", "primaryColor": "#e8f1fb", "primaryBorderColor": "#2f5d8a", "primaryTextColor": "#0f1b2d", "lineColor": "#6b7f99"}}}%%
-erDiagram
-    app_user {
-        SERIAL user_id PK
-        VARCHAR_30 nickname "UNIQUE"
-        VARCHAR_254 email "UNIQUE, regex"
-        VARCHAR_16 phone_number "UNIQUE, E164"
-        VARCHAR_255 password_hash
-        INTEGER age "CHECK 18..120"
-        user_status status
-        user_role role
-        TIMESTAMPTZ created_at
-    }
-    subscription {
-        SERIAL subscription_id PK
-        INTEGER user_id FK "UNIQUE"
-        subscription_plan plan
-        INTEGER price "CHECK >= 0"
-        VARCHAR_100 terms
-        subscription_status status
-        TIMESTAMPTZ updated_at
-    }
-    author {
-        SERIAL author_id PK
-        VARCHAR_50 name
-        VARCHAR_500 description
-        INTEGER user_id FK "UNIQUE, NULL"
-        CHAR_2 nationality "ISO 3166"
-        INTEGER total_articles "trigger"
-        NUMERIC_3_2 rating "trigger"
-        VARCHAR_11 scopus_id "UNIQUE, 11 digits"
-    }
-    article {
-        SERIAL article_id PK
-        VARCHAR_200 title
-        TEXT content
-        DATE publication_date
-        INTEGER size "GENERATED"
-        INTEGER views "CHECK >= 0"
-        article_status status
-        article_category category
-        VARCHAR_11 scopus_id "UNIQUE"
-        NUMERIC_3_2 rating "trigger"
-        TSVECTOR search_vector "GENERATED, GIN"
-    }
-    article_author {
-        INTEGER author_id PK, FK
-        INTEGER article_id PK, FK
-    }
-    tag {
-        SERIAL tag_id PK
-        VARCHAR_20 name "UNIQUE"
-        VARCHAR_7 colour "#RRGGBB"
-        VARCHAR_100 description
-    }
-    article_tag {
-        INTEGER article_id PK, FK
-        INTEGER tag_id PK, FK
-    }
-    review {
-        SERIAL review_id PK
-        INTEGER user_id FK
-        INTEGER article_id FK
-        SMALLINT rating "CHECK 1..5"
-        VARCHAR_400 content
-        DATE review_date
-    }
-    favorite {
-        INTEGER user_id PK, FK
-        INTEGER article_id PK, FK
-        TIMESTAMPTZ added_at
-    }
-    search_query {
-        SERIAL search_id PK
-        INTEGER user_id FK
-        VARCHAR_200 query_text
-        TIMESTAMPTZ searched_at
-    }
+<p align="center"><img src="docs/er.svg" alt="Даталогическая модель: 10 таблиц, ключи и ограничения" width="100%"></p>
 
-    app_user ||--o| subscription  : "owns"
-    app_user ||--o| author        : "is"
-    author   ||--o{ article_author : ""
-    article  ||--o{ article_author : ""
-    article  ||--o{ article_tag    : ""
-    tag      ||--o{ article_tag    : ""
-    app_user ||--o{ review         : "writes"
-    article  ||--o{ review         : ""
-    app_user ||--o{ favorite       : ""
-    article  ||--o{ favorite       : ""
-    app_user ||--o{ search_query   : "makes"
-```
-
-Исходники диаграмм: [`docs/infological.mmd`](docs/infological.mmd), [`docs/datalogical.mmd`](docs/datalogical.mmd). Знак подчёркивания в типах (`VARCHAR_30`) нужен только синтаксису Mermaid, в SQL это `VARCHAR(30)`.
+Диаграммы нарисованы по Mermaid-исходникам [`docs/infological.mmd`](docs/infological.mmd) и [`docs/datalogical.mmd`](docs/datalogical.mmd); готовые картинки лежат рядом: [`infological.svg`](docs/infological.svg) и [`er.svg`](docs/er.svg).
 
 ## Бизнес-правила в самой базе
 
@@ -251,7 +136,9 @@ postgresql-article-search/
 ├── docs/
 │   ├── design.md                  # что изменено в модели и почему
 │   ├── infological.mmd
-│   └── datalogical.mmd
+│   ├── infological.svg
+│   ├── datalogical.mmd
+│   └── er.svg
 └── assets/banner.svg
 ```
 

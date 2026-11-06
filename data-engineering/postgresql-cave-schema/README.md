@@ -32,123 +32,15 @@
 
 Сущности, их атрибуты без привязки к типам СУБД и связи. Жёлтым выделены ассоциации: `Blur` (кого и чем укрыл туман), `Chase` (кто за кем гонится), `Explore` (кто какую пещеру исследует). `Location` выступает характеристикой: в ней находятся люди, пингвины и существа.
 
-```mermaid
-%%{init: {"theme": "base", "flowchart": {"curve": "basis", "nodeSpacing": 55, "rankSpacing": 70}, "themeVariables": {"fontFamily": "Inter, Segoe UI, sans-serif", "fontSize": "15px", "lineColor": "#6b7f99", "primaryTextColor": "#0f1b2d"}}}%%
-flowchart LR
-    classDef entity fill:#e8f1fb,stroke:#2f5d8a,stroke-width:2px,color:#0f1b2d
-    classDef assoc fill:#fff4d6,stroke:#b8860b,stroke-width:2px,color:#4a3500
-    classDef place fill:#e6f6ef,stroke:#2c8a62,stroke-width:2px,color:#0f3d2a
-
-    FOG["<b>Fog</b><br/>visibility<br/>density<br/>duration_time"]:::entity
-    BLUR{{"<b>Blur</b><br/>укрытие туманом"}}:::assoc
-    PEN["<b>Penguin</b><br/>habitat<br/>population_size<br/>behaviour<br/>status"]:::entity
-    HUM["<b>Human</b><br/>name<br/>age<br/>gender<br/>emotion<br/>status"]:::entity
-    CHASE{{"<b>Chase</b><br/>погоня"}}:::assoc
-    CRE["<b>Creature</b><br/>name<br/>speed<br/>description<br/>status"]:::entity
-    LOC["<b>Location</b><br/>name<br/>coordinates"]:::place
-    EXP{{"<b>Explore</b><br/>исследование"}}:::assoc
-    CAVE["<b>Cave</b><br/>size<br/>age<br/>depth"]:::entity
-    GAL["<b>Gallery</b><br/>size<br/>carving_technique"]:::entity
-
-    FOG -- "N" --- BLUR
-    BLUR -- "N" --- PEN
-    BLUR -- "N" --- HUM
-    CRE -- "N" --- CHASE
-    CHASE -- "N" --- PEN
-    CHASE -- "N" --- HUM
-    HUM -- "N" --- EXP
-    EXP -- "M" --- CAVE
-    CAVE -- "1 : 1" --- GAL
-    LOC -- "1 : N" --- HUM
-    LOC -- "1 : N" --- PEN
-    LOC -- "1 : N" --- CRE
-```
+<p align="center"><img src="docs/infological.svg" alt="Инфологическая модель: сущности, связи и их кратность" width="100%"></p>
 
 ## Даталогическая модель
 
 Реализация инфологической модели средствами PostgreSQL: типы данных, первичные и внешние ключи, ограничения. Ассоциации становятся таблицами с составным первичным ключом.
 
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Inter, Segoe UI, sans-serif", "fontSize": "14px", "primaryColor": "#e8f1fb", "primaryBorderColor": "#2f5d8a", "primaryTextColor": "#0f1b2d", "lineColor": "#6b7f99"}}}%%
-erDiagram
-    location {
-        SERIAL location_id PK
-        VARCHAR_100 name "UNIQUE, NOT NULL"
-        POINT coordinates
-    }
-    cave {
-        SERIAL cave_id PK
-        INTEGER size "CHECK >= 0"
-        INTEGER age "CHECK >= 0"
-        INTEGER depth "CHECK >= 0"
-    }
-    gallery {
-        SERIAL gallery_id PK
-        INTEGER size "CHECK >= 0"
-        VARCHAR_100 carving_technique
-        INTEGER cave_id FK "UNIQUE, NOT NULL"
-    }
-    human {
-        SERIAL human_id PK
-        VARCHAR_50 name
-        INTEGER age "CHECK 0..120"
-        gender_enum gender
-        VARCHAR_100 emotion
-        INTEGER current_location FK
-        VARCHAR_30 status "CHECK IN (...)"
-    }
-    penguin {
-        SERIAL penguin_id PK
-        VARCHAR_100 habitat
-        INTEGER population_size "CHECK >= 0"
-        VARCHAR_100 behaviour
-        INTEGER current_location FK
-        VARCHAR_30 status "CHECK IN (...)"
-    }
-    creature {
-        SERIAL creature_id PK
-        VARCHAR_100 name
-        INTEGER speed "CHECK 0..300000"
-        TEXT description
-        INTEGER current_location FK
-        VARCHAR_30 status "CHECK IN (...)"
-    }
-    fog {
-        SERIAL fog_id PK
-        INTEGER visibility "CHECK >= 0"
-        INTEGER density "CHECK 0..10"
-        INTERVAL duration_time
-    }
-    explore {
-        INTEGER cave_id PK, FK
-        INTEGER human_id PK, FK
-    }
-    chase {
-        INTEGER creature_id PK, FK
-        INTEGER penguin_id PK, FK
-        INTEGER human_id PK, FK
-    }
-    blur {
-        INTEGER fog_id PK, FK
-        INTEGER penguin_id PK, FK
-        INTEGER human_id PK, FK
-    }
+<p align="center"><img src="docs/er.svg" alt="Даталогическая модель: 10 таблиц, ключи и ограничения" width="100%"></p>
 
-    location ||--o{ human    : "current_location"
-    location ||--o{ penguin  : "current_location"
-    location ||--o{ creature : "current_location"
-    cave     ||--o| gallery  : "cave_id"
-    cave     ||--o{ explore  : ""
-    human    ||--o{ explore  : ""
-    creature ||--o{ chase    : ""
-    penguin  ||--o{ chase    : ""
-    human    ||--o{ chase    : ""
-    fog      ||--o{ blur     : ""
-    penguin  ||--o{ blur     : ""
-    human    ||--o{ blur     : ""
-```
-
-Исходники диаграмм лежат отдельно: [`docs/infological.mmd`](docs/infological.mmd), [`docs/datalogical.mmd`](docs/datalogical.mmd). Типы в диаграмме записаны с подчёркиванием (`VARCHAR_100`) только из-за ограничений синтаксиса Mermaid, в SQL это `VARCHAR(100)`.
+Диаграммы нарисованы по Mermaid-исходникам [`docs/infological.mmd`](docs/infological.mmd) и [`docs/datalogical.mmd`](docs/datalogical.mmd); готовые картинки лежат рядом: [`infological.svg`](docs/infological.svg) и [`er.svg`](docs/er.svg).
 
 ## Ограничения целостности
 
@@ -245,7 +137,9 @@ postgresql-cave-schema/
 │   ├── trigger.md
 │   ├── indexing.md
 │   ├── infological.mmd
-│   └── datalogical.mmd
+│   ├── infological.svg
+│   ├── datalogical.mmd
+│   └── er.svg
 └── assets/banner.svg
 ```
 

@@ -1,0 +1,27 @@
+%%{init: {"theme": "base"}}%%
+erDiagram
+    users {
+        VARCHAR_32 login PK "format a-z 0-9 _ . -"
+        VARCHAR_64 salt
+        VARCHAR_128 password_hash "SHA-1 + salt"
+        TIMESTAMPTZ created_at
+    }
+    flats {
+        BIGINT id PK "flat_id_seq"
+        TEXT name "not blank"
+        BIGINT coord_x
+        REAL coord_y "> -519"
+        TIMESTAMPTZ creation_date
+        INTEGER area "nullable, > 0"
+        INTEGER number_of_rooms "> 0"
+        INTEGER height "> 0"
+        REAL kitchen_area "> 0"
+        VARCHAR_8 view "STREET, YARD, BAD, GOOD"
+        TEXT house_name
+        INTEGER house_year "> 0"
+        BIGINT house_flats_on_floor "> 0"
+        BIGINT house_lifts "> 0"
+        VARCHAR_32 owner FK "-> users.login"
+    }
+
+    users ||--o{ flats : "owner"
