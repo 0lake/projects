@@ -6,7 +6,7 @@
   <tr>
     <td width="46%">
       <a href="./resident-evil-network">
-        <img src="resident-evil-network/assets/banner.svg?v=11" alt="Resident Evil Character Network" width="100%">
+        <img src="resident-evil-network/assets/banner.svg?v=12" alt="Resident Evil Character Network" width="100%">
       </a>
     </td>
     <td>
@@ -25,7 +25,7 @@
   <tr>
     <td width="46%">
       <a href="./movies-cleaning-clustering">
-        <img src="movies-cleaning-clustering/assets/banner.svg?v=11" alt="Фильмы: очистка на R и сравнение алгоритмов кластеризации" width="100%">
+        <img src="movies-cleaning-clustering/assets/banner.svg?v=12" alt="Фильмы: очистка на R и сравнение алгоритмов кластеризации" width="100%">
       </a>
     </td>
     <td>

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg?v=11" alt="Spark ETL: CSV to PostgreSQL star schema to ClickHouse and MongoDB" width="100%">
+<img src="assets/banner.svg?v=12" alt="Spark ETL: CSV to PostgreSQL star schema to ClickHouse and MongoDB" width="100%">
 
 <br>
 

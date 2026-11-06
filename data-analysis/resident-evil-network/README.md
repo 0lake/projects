@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg?v=11" alt="Resident Evil Character Network" width="100%">
+<img src="assets/banner.svg?v=12" alt="Resident Evil Character Network" width="100%">
 
 <br>
 

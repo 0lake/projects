@@ -6,7 +6,7 @@
   <tr>
     <td width="46%">
       <a href="./spark-etl-star-schema">
-        <img src="spark-etl-star-schema/assets/banner.svg?v=11" alt="Spark ETL: звездообразная схема в PostgreSQL, витрины в ClickHouse и MongoDB" width="100%">
+        <img src="spark-etl-star-schema/assets/banner.svg?v=12" alt="Spark ETL: звездообразная схема в PostgreSQL, витрины в ClickHouse и MongoDB" width="100%">
       </a>
     </td>
     <td>
@@ -27,7 +27,7 @@
   <tr>
     <td width="46%">
       <a href="./postgresql-article-search">
-        <img src="postgresql-article-search/assets/banner.svg?v=11" alt="Article Search: полнотекстовый поиск, рейтинги и подписки на PostgreSQL" width="100%">
+        <img src="postgresql-article-search/assets/banner.svg?v=12" alt="Article Search: полнотекстовый поиск, рейтинги и подписки на PostgreSQL" width="100%">
       </a>
     </td>
     <td>
@@ -46,7 +46,7 @@
   <tr>
     <td width="46%">
       <a href="./web-scraping-goat-breeds">
-        <img src="web-scraping-goat-breeds/assets/banner.svg?v=11" alt="Веб-скрейпинг: породы коз" width="100%">
+        <img src="web-scraping-goat-breeds/assets/banner.svg?v=12" alt="Веб-скрейпинг: породы коз" width="100%">
       </a>
     </td>
     <td>
@@ -65,7 +65,7 @@
   <tr>
     <td width="46%">
       <a href="./postgresql-cave-schema">
-        <img src="postgresql-cave-schema/assets/banner.svg?v=11" alt="Cave Schema: проектирование базы данных на PostgreSQL" width="100%">
+        <img src="postgresql-cave-schema/assets/banner.svg?v=12" alt="Cave Schema: проектирование базы данных на PostgreSQL" width="100%">
       </a>
     </td>
     <td>

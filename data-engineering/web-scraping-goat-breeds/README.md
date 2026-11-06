@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg?v=11" alt="Web scraping: Wikipedia table of goat breeds" width="100%">
+<img src="assets/banner.svg?v=12" alt="Web scraping: Wikipedia table of goat breeds" width="100%">
 
 <br>
 

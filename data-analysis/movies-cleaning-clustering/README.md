@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg?v=11" alt="Movies: data cleaning in R and clustering in Python" width="100%">
+<img src="assets/banner.svg?v=12" alt="Movies: data cleaning in R and clustering in Python" width="100%">
 
 <br>
 
