@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg?v=7" alt="Oleg Sadovnikov: business and product analytics, data analysis, ML" width="100%">
+<img src="assets/banner.svg?v=8" alt="Oleg Sadovnikov: business and product analytics, data analysis, ML" width="100%">
 
 <br>
 
@@ -22,7 +22,7 @@
   <tr>
     <td width="46%">
       <a href="./tbank-intensive">
-        <img src="tbank-intensive/assets/banner.svg?v=7" alt="T-Travel Price Tracker" width="100%">
+        <img src="tbank-intensive/assets/banner.svg?v=8" alt="T-Travel Price Tracker" width="100%">
       </a>
     </td>
     <td>
@@ -43,7 +43,7 @@
   <tr>
     <td width="46%">
       <a href="./ml/telco-churn-prediction">
-        <img src="ml/telco-churn-prediction/assets/banner.svg?v=7" alt="Telco Churn" width="100%">
+        <img src="ml/telco-churn-prediction/assets/banner.svg?v=8" alt="Telco Churn" width="100%">
       </a>
     </td>
     <td>
@@ -63,7 +63,7 @@
   <tr>
     <td width="46%">
       <a href="./data-analysis/resident-evil-network">
-        <img src="data-analysis/resident-evil-network/assets/banner.svg?v=7" alt="Resident Evil Character Network" width="100%">
+        <img src="data-analysis/resident-evil-network/assets/banner.svg?v=8" alt="Resident Evil Character Network" width="100%">
       </a>
     </td>
     <td>
@@ -83,7 +83,7 @@
   <tr>
     <td width="46%">
       <a href="./ml/arima-gdp-forecasting">
-        <img src="ml/arima-gdp-forecasting/assets/banner.svg?v=7" alt="ARIMA vs SARIMAX" width="100%">
+        <img src="ml/arima-gdp-forecasting/assets/banner.svg?v=8" alt="ARIMA vs SARIMAX" width="100%">
       </a>
     </td>
     <td>
@@ -103,7 +103,7 @@
   <tr>
     <td width="46%">
       <a href="./data-engineering/spark-etl-star-schema">
-        <img src="data-engineering/spark-etl-star-schema/assets/banner.svg?v=7" alt="Spark ETL: звездообразная схема в PostgreSQL, витрины в ClickHouse и MongoDB" width="100%">
+        <img src="data-engineering/spark-etl-star-schema/assets/banner.svg?v=8" alt="Spark ETL: звездообразная схема в PostgreSQL, витрины в ClickHouse и MongoDB" width="100%">
       </a>
     </td>
     <td>
@@ -124,7 +124,7 @@
   <tr>
     <td width="46%">
       <a href="./data-engineering/web-scraping-goat-breeds">
-        <img src="data-engineering/web-scraping-goat-breeds/assets/banner.svg?v=7" alt="Веб-скрейпинг: породы коз" width="100%">
+        <img src="data-engineering/web-scraping-goat-breeds/assets/banner.svg?v=8" alt="Веб-скрейпинг: породы коз" width="100%">
       </a>
     </td>
     <td>
@@ -143,7 +143,7 @@
   <tr>
     <td width="46%">
       <a href="./data-analysis/movies-cleaning-clustering">
-        <img src="data-analysis/movies-cleaning-clustering/assets/banner.svg?v=7" alt="Фильмы: очистка на R и сравнение алгоритмов кластеризации" width="100%">
+        <img src="data-analysis/movies-cleaning-clustering/assets/banner.svg?v=8" alt="Фильмы: очистка на R и сравнение алгоритмов кластеризации" width="100%">
       </a>
     </td>
     <td>
@@ -162,7 +162,7 @@
   <tr>
     <td width="46%">
       <a href="./ml/health-insurance-rate-modeling">
-        <img src="ml/health-insurance-rate-modeling/assets/banner.svg?v=7" alt="Тарифы медстрахования: классификация и регрессия без утечки" width="100%">
+        <img src="ml/health-insurance-rate-modeling/assets/banner.svg?v=8" alt="Тарифы медстрахования: классификация и регрессия без утечки" width="100%">
       </a>
     </td>
     <td>
@@ -185,7 +185,7 @@
 
 ## Инструменты
 
-<img src="assets/tools.svg?v=7" alt="Инструменты: Python, pandas, R, dplyr, ggplot2, igraph, Jupyter, scikit-learn, sktime, statsmodels, SHAP, Apache Spark, PostgreSQL, ClickHouse, MongoDB, Docker, A/B-тесты, PRD, CustDev, OpenAPI, Git" width="100%">
+<img src="assets/tools.svg?v=8" alt="Инструменты: Python, pandas, R, dplyr, ggplot2, igraph, Jupyter, scikit-learn, sktime, statsmodels, SHAP, Apache Spark, PostgreSQL, ClickHouse, MongoDB, Docker, A/B-тесты, PRD, CustDev, OpenAPI, Git" width="100%">
 
 ## Структура
 
