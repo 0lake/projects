@@ -99,10 +99,88 @@
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./data-engineering/spark-etl-star-schema">
+        <img src="data-engineering/spark-etl-star-schema/assets/banner.svg" alt="Spark ETL: звездообразная схема в PostgreSQL, витрины в ClickHouse и MongoDB" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./data-engineering/spark-etl-star-schema">Spark ETL: звездообразная схема в PostgreSQL, витрины в ClickHouse и MongoDB</a></h3>
+      <p>Spark читает плоскую выгрузку, строит измерения и факты в PostgreSQL, считает 6 витрин и пишет их в ClickHouse и MongoDB. Docker Compose с healthcheck, секреты в .env, тесты на синтетических данных.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Spark-E25A1C?style=flat-square&logo=apachespark&logoColor=white" alt="Spark">
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+        <img src="https://img.shields.io/badge/ClickHouse-FFCC01?style=flat-square" alt="ClickHouse">
+        <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB">
+        <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./data-engineering/web-scraping-goat-breeds">
+        <img src="data-engineering/web-scraping-goat-breeds/assets/banner.svg" alt="Веб-скрейпинг: породы коз" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./data-engineering/web-scraping-goat-breeds">Веб-скрейпинг: породы коз</a></h3>
+      <p>Парсер таблицы пород: retry-сессия, поиск столбцов по заголовкам, абсолютные ссылки, загрузка изображений и HTML-галерея. Тесты на фикстуре, CLI.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/BeautifulSoup-4B8BBE?style=flat-square" alt="BeautifulSoup">
+        <img src="https://img.shields.io/badge/requests-2C5BB4?style=flat-square" alt="requests">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./data-analysis/movies-cleaning-clustering">
+        <img src="data-analysis/movies-cleaning-clustering/assets/banner.svg" alt="Фильмы: очистка на R и сравнение алгоритмов кластеризации" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./data-analysis/movies-cleaning-clustering">Фильмы: очистка на R и сравнение алгоритмов кластеризации</a></h3>
+      <p>Очистка на R, затем K-Means, MiniBatch, GMM и Ward с метриками качества, PCA и профилями кластеров. Вывод честный: структура в данных слабая, и это показано цифрами.</p>
+      <p>
+        <img src="https://img.shields.io/badge/R-276DC3?style=flat-square&logo=r&logoColor=white" alt="R">
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit--learn">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./ml/health-insurance-rate-modeling">
+        <img src="ml/health-insurance-rate-modeling/assets/banner.svg" alt="Тарифы медстрахования: классификация и регрессия без утечки" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./ml/health-insurance-rate-modeling">Тарифы медстрахования: классификация и регрессия без утечки</a></h3>
+      <p>Разбор и исправление лабораторной с утечкой цели: разбиение по планам, пороги классов по train, baseline и ансамбль LR + RF. Тесты показывают, как выглядит утечка.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit--learn">
+      </p>
+    </td>
+  </tr>
+</table>
+
 | Раздел | О чем |
 |---|---|
 | [🏦 tbank-intensive](./tbank-intensive) | Продуктовая и системная аналитика: анализ данных, CustDev, PRD, API, A/B-тест |
 | [📊 data-analysis](./data-analysis) | Исследование данных, сетевой анализ, визуализация |
+| [🛠 data-engineering](./data-engineering) | ETL на Spark, PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
 | [🤖 ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей |
 
 ## 🧰 Инструменты
@@ -114,6 +192,11 @@
 ![statsmodels](https://img.shields.io/badge/statsmodels-4A6FA5?style=for-the-badge)
 ![SHAP](https://img.shields.io/badge/SHAP-0B7285?style=for-the-badge)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+![Spark](https://img.shields.io/badge/Spark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![ClickHouse](https://img.shields.io/badge/ClickHouse-FFCC01?style=for-the-badge&logoColor=black)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
 ![igraph](https://img.shields.io/badge/igraph-1F77B4?style=for-the-badge)
 ![ggplot2](https://img.shields.io/badge/ggplot2-1F77B4?style=for-the-badge)
@@ -127,11 +210,16 @@
 ```text
 projects/
 ├── tbank-intensive/     # проект с интенсива Т-Банка
+├── data-engineering/    # ETL и сбор данных
+│   ├── spark-etl-star-schema/
+│   └── web-scraping-goat-breeds/
 ├── data-analysis/       # анализ данных
-│   └── resident-evil-network/
+│   ├── resident-evil-network/
+│   └── movies-cleaning-clustering/
 ├── ml/                  # машинное обучение
 │   ├── telco-churn-prediction/
-│   └── arima-gdp-forecasting/
+│   ├── arima-gdp-forecasting/
+│   └── health-insurance-rate-modeling/
 ├── _template/           # шаблон для нового проекта
 └── README.md
 ```

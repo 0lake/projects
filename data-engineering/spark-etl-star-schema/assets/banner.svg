@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Spark ETL: CSV to star schema to ClickHouse and MongoDB">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1020"/><stop offset="1" stop-color="#131a35"/></linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F97316"/><stop offset="1" stop-color="#FACC15"/></linearGradient>
+    <radialGradient id="glow" cx="80%" cy="50%" r="55%"><stop offset="0" stop-color="#F97316" stop-opacity="0.20"/><stop offset="1" stop-color="#F97316" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/></pattern>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#8aa0c8"/></marker>
+  </defs>
+  <rect width="1280" height="320" rx="18" fill="url(#bg)"/><rect width="1280" height="320" rx="18" fill="url(#grid)"/><rect width="1280" height="320" rx="18" fill="url(#glow)"/>
+
+  <!-- flow -->
+  <g font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" text-anchor="middle">
+    <!-- CSV -->
+    <g transform="translate(790 120)">
+      <rect width="62" height="76" rx="8" fill="#1c2547" stroke="#8aa0c8" stroke-opacity="0.6"/>
+      <path d="M12 24H50M12 38H50M12 52H38" stroke="#8aa0c8" stroke-width="3" stroke-linecap="round"/>
+      <text x="31" y="100" font-size="14" fill="#8aa0c8">CSV</text>
+    </g>
+    <path d="M862 158H912" stroke="#8aa0c8" stroke-width="3" marker-end="url(#arr)"/>
+    <!-- Spark -->
+    <g transform="translate(930 116)">
+      <circle cx="42" cy="42" r="42" fill="#1c2547" stroke="url(#ac)" stroke-width="3"/>
+      <path d="M42 18l7 16 17 2-13 11 4 17-15-9-15 9 4-17-13-11 17-2z" fill="url(#ac)"/>
+      <text x="42" y="116" font-size="14" fill="#c8d3ee">Spark</text>
+    </g>
+    <path d="M1026 158H1066" stroke="#8aa0c8" stroke-width="3" marker-end="url(#arr)"/>
+    <!-- PG -->
+    <g transform="translate(1084 66)">
+      <ellipse cx="34" cy="14" rx="34" ry="12" fill="#4169E1"/><path d="M0 14V50C0 57 15 62 34 62S68 57 68 50V14" fill="#2f4fb8"/>
+      <ellipse cx="34" cy="14" rx="34" ry="12" fill="#5b82f0"/>
+      <text x="34" y="86" font-size="13" fill="#c8d3ee">PostgreSQL</text>
+    </g>
+    <!-- CH -->
+    <g transform="translate(1084 168)">
+      <rect x="0" y="0" width="68" height="64" rx="8" fill="#1c2547" stroke="#FACC15" stroke-opacity="0.7"/>
+      <path d="M14 12V52M26 12V52M38 12V52M50 12V52" stroke="#FACC15" stroke-width="5" stroke-linecap="round"/>
+      <text x="34" y="86" font-size="13" fill="#c8d3ee">ClickHouse</text>
+    </g>
+    <!-- Mongo -->
+    <g transform="translate(1176 118)">
+      <path d="M17 0C30 14 36 28 36 46C36 62 28 72 17 84C6 72 -2 62 -2 46C-2 28 4 14 17 0z" fill="#47A248"/>
+      <path d="M17 0V84" stroke="#0b1020" stroke-opacity="0.45" stroke-width="2"/>
+      <text x="17" y="108" font-size="13" fill="#c8d3ee">MongoDB</text>
+    </g>
+    <path d="M1066 140L1090 112M1066 176L1090 196" stroke="#8aa0c8" stroke-width="2" opacity="0"/>
+  </g>
+
+  <rect x="72" y="70" width="72" height="6" rx="3" fill="url(#ac)"/>
+  <text x="72" y="130" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#F97316" letter-spacing="3">DATA ENGINEERING  ·  ETL</text>
+  <text x="72" y="196" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="#ffffff" letter-spacing="-1">Spark ETL Pipeline</text>
+  <text x="72" y="244" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="27" font-weight="500" fill="#c3cdd2">star schema in PostgreSQL, marts in two databases</text>
+  <text x="72" y="284" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="19" fill="#7e8ca8">PostgreSQL  ·  ClickHouse  ·  MongoDB  ·  Docker Compose</text>
+</svg>

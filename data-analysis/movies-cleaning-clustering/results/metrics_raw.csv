@@ -1,0 +1,6 @@
+algorithm,silhouette,davies_bouldin,calinski_harabasz,min_cluster_share,max_cluster_share
+Custom K-Means,0.2226,1.3631,2401.4608,0.1456,0.3309
+K-Means (sklearn),0.223,1.3612,2401.3523,0.145,0.3319
+MiniBatch K-Means,0.2175,1.3437,2351.6073,0.1335,0.3497
+Gaussian Mixture,0.0183,4.5652,712.6128,0.2252,0.2807
+Ward,0.1565,1.7011,1750.2933,0.1578,0.3033

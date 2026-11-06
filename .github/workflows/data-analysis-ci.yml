@@ -1,0 +1,24 @@
+name: data-analysis-ci
+
+on:
+  push:
+    paths:
+      - "data-analysis/movies-cleaning-clustering/**"
+      - ".github/workflows/data-analysis-ci.yml"
+  pull_request:
+    paths:
+      - "data-analysis/movies-cleaning-clustering/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-analysis/movies-cleaning-clustering
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -e ".[dev]"
+      - run: pytest -q

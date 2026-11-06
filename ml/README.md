@@ -44,4 +44,22 @@
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./health-insurance-rate-modeling">
+        <img src="health-insurance-rate-modeling/assets/banner.svg" alt="Тарифы медстрахования: классификация и регрессия без утечки" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./health-insurance-rate-modeling">Тарифы медстрахования: классификация и регрессия без утечки</a></h3>
+      <p>Разбор и исправление лабораторной с утечкой цели: разбиение по планам, пороги классов по train, baseline и ансамбль LR + RF. Тесты показывают, как выглядит утечка.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit--learn">
+      </p>
+    </td>
+  </tr>
+</table>
+
 [← Все проекты](../)

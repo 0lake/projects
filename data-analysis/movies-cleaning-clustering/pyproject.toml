@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "movies-clustering"
+version = "1.0.0"
+description = "Clustering of cleaned IMDb-style movie data: custom K-Means, MiniBatch K-Means, GMM, Ward"
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas", "scikit-learn", "matplotlib", "seaborn"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+movies-clustering = "movies_clustering.run:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Web scraping of a Wikipedia table">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a130e"/><stop offset="1" stop-color="#0f2218"/></linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4ADE80"/><stop offset="1" stop-color="#A3E635"/></linearGradient>
+    <radialGradient id="glow" cx="82%" cy="45%" r="55%"><stop offset="0" stop-color="#4ADE80" stop-opacity="0.20"/><stop offset="1" stop-color="#4ADE80" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/></pattern>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#86a894"/></marker>
+  </defs>
+  <rect width="1280" height="320" rx="18" fill="url(#bg)"/><rect width="1280" height="320" rx="18" fill="url(#grid)"/><rect width="1280" height="320" rx="18" fill="url(#glow)"/>
+
+  <g font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" text-anchor="middle">
+    <!-- web page -->
+    <g transform="translate(800 92)">
+      <rect width="130" height="136" rx="10" fill="#14281d" stroke="#86a894" stroke-opacity="0.55"/>
+      <rect width="130" height="22" rx="10" fill="#1d3a2a"/>
+      <circle cx="14" cy="11" r="3.5" fill="#86a894"/><circle cx="27" cy="11" r="3.5" fill="#86a894"/>
+      <g fill="#86a894" fill-opacity="0.55">
+        <rect x="12" y="36" width="24" height="18" rx="3"/><rect x="44" y="40" width="74" height="4" rx="2"/><rect x="44" y="48" width="48" height="4" rx="2"/>
+        <rect x="12" y="62" width="24" height="18" rx="3"/><rect x="44" y="66" width="74" height="4" rx="2"/><rect x="44" y="74" width="56" height="4" rx="2"/>
+        <rect x="12" y="88" width="24" height="18" rx="3"/><rect x="44" y="92" width="74" height="4" rx="2"/><rect x="44" y="100" width="40" height="4" rx="2"/>
+      </g>
+      <text x="65" y="162" font-size="14" fill="#86a894">HTML</text>
+    </g>
+    <path d="M946 160H1000" stroke="#86a894" stroke-width="3" marker-end="url(#arr)"/>
+    <!-- parser -->
+    <g transform="translate(1016 118)">
+      <circle cx="42" cy="42" r="42" fill="#14281d" stroke="url(#ac)" stroke-width="3"/>
+      <text x="42" y="52" font-size="30" font-weight="800" fill="url(#ac)">&lt;/&gt;</text>
+      <text x="42" y="116" font-size="14" fill="#c8e0d0">parse</text>
+    </g>
+    <path d="M1112 160H1150" stroke="#86a894" stroke-width="3" marker-end="url(#arr)"/>
+    <!-- csv -->
+    <g transform="translate(1162 112)">
+      <rect width="62" height="96" rx="8" fill="#14281d" stroke="#A3E635" stroke-opacity="0.7"/>
+      <g stroke="#A3E635" stroke-width="3" stroke-linecap="round"><path d="M12 24H50M12 40H50M12 56H50M12 72H36"/></g>
+      <text x="31" y="122" font-size="14" fill="#c8e0d0">CSV</text>
+    </g>
+  </g>
+
+  <rect x="72" y="70" width="72" height="6" rx="3" fill="url(#ac)"/>
+  <text x="72" y="130" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#4ADE80" letter-spacing="3">DATA ENGINEERING  ·  WEB SCRAPING</text>
+  <text x="72" y="196" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="#ffffff" letter-spacing="-1">Goat Breeds Scraper</text>
+  <text x="72" y="244" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="27" font-weight="500" fill="#c3cdd2">from a Wikipedia table to clean data and a gallery</text>
+  <text x="72" y="284" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="19" fill="#7e9a8a">requests  ·  BeautifulSoup  ·  pandas  ·  pytest</text>
+</svg>

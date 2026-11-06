@@ -1,0 +1,7 @@
+{
+  "rows": 7945,
+  "k": 4,
+  "log_transform": true,
+  "best_by_silhouette": "K-Means (sklearn)",
+  "share_rows_with_median_filled_gross_or_metascore": 0.415
+}

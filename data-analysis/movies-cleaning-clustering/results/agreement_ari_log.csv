@@ -1,0 +1,6 @@
+,Custom K-Means,K-Means (sklearn),MiniBatch K-Means,Gaussian Mixture,Ward
+Custom K-Means,1.0,0.995,0.526,0.226,0.396
+K-Means (sklearn),0.995,1.0,0.525,0.226,0.396
+MiniBatch K-Means,0.526,0.525,1.0,0.216,0.558
+Gaussian Mixture,0.226,0.226,0.216,1.0,0.215
+Ward,0.396,0.396,0.558,0.215,1.0

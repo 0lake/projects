@@ -39,3 +39,14 @@ data-analysis/resident-evil-network/data/*.rds
 
 ml/arima-gdp-forecasting/results/run/
 ml/arima-gdp-forecasting/data/*.csv
+
+# Лабораторные: данные и артефакты запусков
+data-analysis/movies-cleaning-clustering/data/*.csv
+ml/health-insurance-rate-modeling/data/*.csv
+data-engineering/*/data/*.csv
+data-engineering/web-scraping-goat-breeds/output/
+data-engineering/spark-etl-star-schema/.env
+*.egg-info/
+.pytest_cache/
+spark-warehouse/
+metastore_db/
