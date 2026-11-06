@@ -6,7 +6,7 @@
   <tr>
     <td width="46%">
       <a href="./spark-etl-star-schema">
-        <img src="spark-etl-star-schema/assets/banner.svg?v=8" alt="Spark ETL: звездообразная схема в PostgreSQL, витрины в ClickHouse и MongoDB" width="100%">
+        <img src="spark-etl-star-schema/assets/banner.svg?v=9" alt="Spark ETL: звездообразная схема в PostgreSQL, витрины в ClickHouse и MongoDB" width="100%">
       </a>
     </td>
     <td>
@@ -27,7 +27,7 @@
   <tr>
     <td width="46%">
       <a href="./web-scraping-goat-breeds">
-        <img src="web-scraping-goat-breeds/assets/banner.svg?v=8" alt="Веб-скрейпинг: породы коз" width="100%">
+        <img src="web-scraping-goat-breeds/assets/banner.svg?v=9" alt="Веб-скрейпинг: породы коз" width="100%">
       </a>
     </td>
     <td>
