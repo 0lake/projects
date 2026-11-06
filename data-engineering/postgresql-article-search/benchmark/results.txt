@@ -1,0 +1,34 @@
+ setseed 
+---------
+ 
+(1 row)
+
+--- с GIN-индексом
+                                        QUERY PLAN                                        
+------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on article (actual time=1.605..1.613 rows=20 loops=1)
+   Recheck Cond: (search_vector @@ '''квазикристалл'''::tsquery)
+   Heap Blocks: exact=5
+   Buffers: shared hit=513
+   ->  Bitmap Index Scan on idx_article_search (actual time=1.593..1.593 rows=20 loops=1)
+         Index Cond: (search_vector @@ '''квазикристалл'''::tsquery)
+         Buffers: shared hit=508
+ Planning:
+   Buffers: shared hit=41 read=7
+ Planning Time: 0.215 ms
+ Execution Time: 1.631 ms
+(11 rows)
+
+--- без индекса
+                            QUERY PLAN                            
+------------------------------------------------------------------
+ Seq Scan on article (actual time=36.962..36.973 rows=20 loops=1)
+   Filter: (search_vector @@ '''квазикристалл'''::tsquery)
+   Rows Removed by Filter: 99980
+   Buffers: shared hit=14290
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.135 ms
+ Execution Time: 36.986 ms
+(8 rows)
+

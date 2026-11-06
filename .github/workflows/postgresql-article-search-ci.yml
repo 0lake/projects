@@ -1,0 +1,45 @@
+name: postgresql-article-search tests
+
+on:
+  push:
+    paths:
+      - "data-engineering/postgresql-article-search/**"
+      - ".github/workflows/postgresql-article-search-ci.yml"
+  pull_request:
+    paths:
+      - "data-engineering/postgresql-article-search/**"
+
+jobs:
+  sql:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: articles
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: articles
+    defaults:
+      run:
+        working-directory: data-engineering/postgresql-article-search
+    steps:
+      - uses: actions/checkout@v4
+      - name: Schema, functions, triggers, views, seed
+        run: |
+          for f in sql/01_schema.sql sql/02_functions_triggers.sql sql/03_views.sql sql/04_seed.sql; do
+            psql -v ON_ERROR_STOP=1 -q -f "$f"
+          done
+      - name: Analytics queries run without errors
+        run: psql -v ON_ERROR_STOP=1 -q -f sql/05_analytics.sql > /dev/null
+      - name: Trigger, constraint and search tests
+        run: psql -v ON_ERROR_STOP=1 -f sql/06_tests.sql

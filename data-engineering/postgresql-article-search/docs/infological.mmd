@@ -1,0 +1,23 @@
+%%{init: {"theme": "base", "flowchart": {"curve": "basis", "nodeSpacing": 50, "rankSpacing": 80}, "themeVariables": {"fontFamily": "Inter, Segoe UI, sans-serif", "fontSize": "15px", "lineColor": "#6b7f99", "primaryTextColor": "#0f1b2d"}}}%%
+flowchart LR
+    classDef entity fill:#e8f1fb,stroke:#2f5d8a,stroke-width:2px,color:#0f1b2d
+    classDef assoc fill:#fff4d6,stroke:#b8860b,stroke-width:2px,color:#4a3500
+
+    USER["<b>User</b><br/>nickname<br/>email<br/>phone_number<br/>age<br/>status<br/>role"]:::entity
+    SUB["<b>Subscription</b><br/>plan<br/>price<br/>terms<br/>status"]:::entity
+    AUTH["<b>Author</b><br/>name<br/>description<br/>nationality<br/>scopus_id<br/>total_articles<br/>rating"]:::entity
+    ART["<b>Article</b><br/>title<br/>content<br/>publication_date<br/>views<br/>status<br/>category<br/>rating"]:::entity
+    TAG["<b>Tag</b><br/>name<br/>colour<br/>description"]:::entity
+    REV{{"<b>Review</b><br/>rating, content,<br/>date"}}:::assoc
+    FAV{{"<b>Favorite</b>"}}:::assoc
+    SRCH["<b>SearchQuery</b><br/>query_text<br/>searched_at"]:::entity
+
+    USER -- "1 : 0..1" --- SUB
+    USER -- "1 : 0..1" --- AUTH
+    AUTH -- "N : M (авторство)" --- ART
+    ART -- "N : M" --- TAG
+    USER -- "1" --- REV
+    REV -- "N" --- ART
+    USER -- "1" --- FAV
+    FAV -- "N" --- ART
+    USER -- "1 : N" --- SRCH

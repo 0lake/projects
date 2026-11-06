@@ -123,6 +123,25 @@
 <table>
   <tr>
     <td width="46%">
+      <a href="./data-engineering/postgresql-article-search">
+        <img src="data-engineering/postgresql-article-search/assets/banner.svg?v=11" alt="Article Search: полнотекстовый поиск, рейтинги и подписки на PostgreSQL" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./data-engineering/postgresql-article-search">Article Search: база данных сервиса поиска статей</a></h3>
+      <p>Прикладная схема на PostgreSQL: полнотекстовый поиск на русском (GIN, 1,6 мс против 37 мс на 100 000 статей), цепочка триггеров для рейтингов, бизнес-правила в ограничениях, представления и оконные функции. Тесты на ASSERT и CI на живой базе.</p>
+      <p>
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+        <img src="https://img.shields.io/badge/Full--text_search-F4A261?style=flat-square" alt="Full-text search">
+        <img src="https://img.shields.io/badge/PL%2FpgSQL-336791?style=flat-square" alt="PL/pgSQL">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
       <a href="./data-engineering/web-scraping-goat-breeds">
         <img src="data-engineering/web-scraping-goat-breeds/assets/banner.svg?v=11" alt="Веб-скрейпинг: породы коз" width="100%">
       </a>
@@ -214,6 +233,7 @@ projects/
 ├── data-engineering/    # ETL и сбор данных
 │   ├── spark-etl-star-schema/
 │   ├── postgresql-cave-schema/
+│   ├── postgresql-article-search/
 │   └── web-scraping-goat-breeds/
 ├── data-analysis/       # анализ данных
 │   ├── resident-evil-network/
