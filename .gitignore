@@ -32,3 +32,7 @@ ml/telco-churn-prediction/data/*.csv
 *.egg-info/
 .pytest_cache/
 ml/telco-churn-prediction/models/
+
+# Resident Evil network
+data-analysis/resident-evil-network/data/*.csv
+data-analysis/resident-evil-network/data/*.rds

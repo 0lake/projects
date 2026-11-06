@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Temporal network analysis of character co-appearances">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0d12"/>
+      <stop offset="1" stop-color="#1a1216"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#EF4444"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="82%" cy="45%" r="50%">
+      <stop offset="0" stop-color="#EF4444" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#EF4444" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="320" rx="18" fill="url(#bg)"/>
+  <rect width="1280" height="320" rx="18" fill="url(#grid)"/>
+  <rect width="1280" height="320" rx="18" fill="url(#glow)"/>
+
+  <!-- abstract network -->
+  <g stroke="#94a3b8" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round">
+    <line x1="1010" y1="160" x2="900" y2="95"/>
+    <line x1="1010" y1="160" x2="930" y2="235"/>
+    <line x1="1010" y1="160" x2="1110" y2="90"/>
+    <line x1="1010" y1="160" x2="1140" y2="200"/>
+    <line x1="1010" y1="160" x2="1060" y2="262"/>
+    <line x1="900" y1="95" x2="930" y2="235"/>
+    <line x1="900" y1="95" x2="840" y2="165"/>
+    <line x1="930" y1="235" x2="840" y2="165"/>
+    <line x1="1110" y1="90" x2="1140" y2="200"/>
+    <line x1="1140" y1="200" x2="1060" y2="262"/>
+    <line x1="1110" y1="90" x2="1190" y2="140"/>
+    <line x1="1190" y1="140" x2="1140" y2="200"/>
+    <line x1="1060" y1="262" x2="930" y2="235"/>
+  </g>
+  <g>
+    <circle cx="1010" cy="160" r="26" fill="url(#ac)"/>
+    <circle cx="1010" cy="160" r="40" fill="#EF4444" fill-opacity="0.15"/>
+    <circle cx="900"  cy="95"  r="15" fill="#F59E0B"/>
+    <circle cx="930"  cy="235" r="13" fill="#F59E0B"/>
+    <circle cx="1110" cy="90"  r="13" fill="#F59E0B"/>
+    <circle cx="1140" cy="200" r="17" fill="#F59E0B"/>
+    <circle cx="1060" cy="262" r="10" fill="#64748B"/>
+    <circle cx="840"  cy="165" r="10" fill="#64748B"/>
+    <circle cx="1190" cy="140" r="9"  fill="#64748B"/>
+  </g>
+
+  <rect x="72" y="70" width="72" height="6" rx="3" fill="url(#ac)"/>
+  <text x="72" y="130" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#F87171" letter-spacing="3">NETWORK ANALYSIS  ·  R</text>
+  <text x="72" y="196" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="56" font-weight="800" fill="#ffffff" letter-spacing="-1">Character Network</text>
+  <text x="72" y="244" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="28" font-weight="500" fill="#cbd0d8">how a 30-year franchise universe fragments</text>
+  <text x="72" y="284" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="19" fill="#8a8f99">12 cumulative snapshots  ·  Louvain communities  ·  centralities  ·  articulation points</text>
+</svg>
