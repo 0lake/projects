@@ -8,7 +8,7 @@
   <tr>
     <td width="46%">
       <a href="./telco-churn-prediction">
-        <img src="telco-churn-prediction/assets/banner.svg?v=10" alt="Telco Churn" width="100%">
+        <img src="telco-churn-prediction/assets/banner.svg?v=11" alt="Telco Churn" width="100%">
       </a>
     </td>
     <td>
@@ -28,7 +28,7 @@
   <tr>
     <td width="46%">
       <a href="./arima-gdp-forecasting">
-        <img src="arima-gdp-forecasting/assets/banner.svg?v=10" alt="ARIMA vs SARIMAX" width="100%">
+        <img src="arima-gdp-forecasting/assets/banner.svg?v=11" alt="ARIMA vs SARIMAX" width="100%">
       </a>
     </td>
     <td>
@@ -48,7 +48,7 @@
   <tr>
     <td width="46%">
       <a href="./health-insurance-rate-modeling">
-        <img src="health-insurance-rate-modeling/assets/banner.svg?v=10" alt="Тарифы медстрахования: классификация и регрессия без утечки" width="100%">
+        <img src="health-insurance-rate-modeling/assets/banner.svg?v=11" alt="Тарифы медстрахования: классификация и регрессия без утечки" width="100%">
       </a>
     </td>
     <td>

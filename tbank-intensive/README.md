@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg?v=10" alt="T-Travel Price Tracker with T-Premium privileges" width="100%">
+<img src="assets/banner.svg?v=11" alt="T-Travel Price Tracker with T-Premium privileges" width="100%">
 
 <br>
 
