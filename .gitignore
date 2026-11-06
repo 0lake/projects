@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Данные и модели (большие файлы не коммитим)
+*.csv.gz
+*.parquet
+*.pkl
+*.joblib
+*.h5
+data/raw/
+models/*.bin
+
+# IDE и система
+.idea/
+.vscode/
+.DS_Store
+
+# Учебные датасеты Т-Банка
+tbank-intensive/analysis/data/*.csv
+tbank-intensive/analysis/data/*.xlsx

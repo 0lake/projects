@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Oleg Sadovnikov: product and data analytics">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f14"/>
+      <stop offset="1" stop-color="#161c28"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFDD2D"/>
+      <stop offset="1" stop-color="#FF8A3D"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#FFDD2D" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#FFDD2D" stop-opacity="0.95"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="88%" cy="15%" r="55%">
+      <stop offset="0" stop-color="#FFDD2D" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#FFDD2D" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="320" rx="18" fill="url(#bg)"/>
+  <rect width="1280" height="320" rx="18" fill="url(#grid)"/>
+  <rect width="1280" height="320" rx="18" fill="url(#glow)"/>
+
+  <!-- decorative chart -->
+  <g transform="translate(820 60)">
+    <rect x="0"   y="150" width="44" height="50"  rx="8" fill="#ffffff" fill-opacity="0.08"/>
+    <rect x="64"  y="120" width="44" height="80"  rx="8" fill="#ffffff" fill-opacity="0.10"/>
+    <rect x="128" y="90"  width="44" height="110" rx="8" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="192" y="55"  width="44" height="145" rx="8" fill="url(#bar)"/>
+    <rect x="256" y="20"  width="44" height="180" rx="8" fill="url(#bar)"/>
+    <polyline points="22,140 86,108 150,80 214,44 278,10" fill="none" stroke="url(#ac)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="278" cy="10" r="8" fill="#FFDD2D"/>
+    <circle cx="278" cy="10" r="16" fill="#FFDD2D" fill-opacity="0.2"/>
+  </g>
+
+  <rect x="72" y="78" width="72" height="6" rx="3" fill="url(#ac)"/>
+  <text x="72" y="152" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#ffffff" letter-spacing="-1">Oleg Sadovnikov</text>
+  <text x="72" y="204" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="28" font-weight="500" fill="#c3cad5">Product analytics  ·  Data analysis  ·  ML</text>
+  <text x="72" y="248" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="20" fill="#7d8797">Business Informatics, ITMO University</text>
+</svg>

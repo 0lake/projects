@@ -1,0 +1,2359 @@
+openapi: 3.0.3
+info:
+  title: T-Travel Price Tracker API
+  description: 'API сервиса «Т-Путешествия» для отслеживания цен на авиабилеты с учётом привилегий Т-Премиума.
+    Позволяет управлять пользователями, подписками на отслеживание цены маршрута, найденными вариантами
+    перелётов (flight offers) и уведомлениями, которые сервис отправляет при появлении выгодного варианта.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Т-Путешествия, команда разработки
+    email: api-support@t-travel.example
+servers:
+- url: https://api.t-bank.example/travel/v1
+  description: Продуктивный сервер
+- url: https://sandbox-api.t-bank.example/travel/v1
+  description: Песочница для тестирования
+tags:
+- name: Users
+  description: Клиенты Т-Банка, использующие сервис отслеживания цен
+- name: Subscriptions
+  description: Подписки на отслеживание цены маршрута
+- name: FlightOffers
+  description: Найденные варианты перелётов по подписке (цена, привилегии)
+- name: Notifications
+  description: Уведомления, отправленные пользователю
+paths:
+  /users:
+    get:
+      tags:
+      - Users
+      summary: Получить список пользователей
+      description: Возвращает постраничный список пользователей с возможностью фильтрации по статусу Т-Премиум.
+      operationId: listUsers
+      parameters:
+      - name: tPremiumStatus
+        in: query
+        description: Фильтр по статусу подписки Т-Премиум
+        required: false
+        schema:
+          $ref: '#/components/schemas/TPremiumStatus'
+      - name: search
+        in: query
+        description: Поиск по имени или email пользователя
+        required: false
+        schema:
+          type: string
+          example: ivanov
+      - name: page
+        in: query
+        description: Номер страницы
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: limit
+        in: query
+        description: Количество элементов на странице
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - $ref: '#/components/parameters/RequestIdHeader'
+      responses:
+        '200':
+          description: Список пользователей успешно получен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+        '400':
+          description: Некорректные параметры запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректные параметры запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для просмотра списка пользователей
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для просмотра списка пользователей
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    post:
+      tags:
+      - Users
+      summary: Создать пользователя
+      description: Регистрирует нового пользователя сервиса отслеживания цен.
+      operationId: createUser
+      parameters:
+      - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+      responses:
+        '201':
+          description: Пользователь успешно создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '409':
+          description: Пользователь с таким email уже существует
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: USER_CONFLICT
+                  message: Пользователь с таким email уже существует
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: email
+                    issue: должен быть валидным email-адресом
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+  /users/{userId}:
+    parameters:
+    - $ref: '#/components/parameters/UserIdPath'
+    - $ref: '#/components/parameters/RequestIdHeader'
+    get:
+      tags:
+      - Users
+      summary: Получить пользователя по идентификатору
+      operationId: getUserById
+      responses:
+        '200':
+          description: Пользователь найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для просмотра данного пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для просмотра данного пользователя
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: USER_NOT_FOUND
+                  message: Пользователь не найден
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    put:
+      tags:
+      - Users
+      summary: Полностью заменить данные пользователя
+      operationId: replaceUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '200':
+          description: Данные пользователя обновлены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: USER_NOT_FOUND
+                  message: Пользователь не найден
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: email
+                    issue: должен быть валидным email-адресом
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    patch:
+      tags:
+      - Users
+      summary: Частично обновить данные пользователя
+      operationId: updateUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPatchRequest'
+      responses:
+        '200':
+          description: Данные пользователя частично обновлены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: USER_NOT_FOUND
+                  message: Пользователь не найден
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: email
+                    issue: должен быть валидным email-адресом
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    delete:
+      tags:
+      - Users
+      summary: Удалить пользователя
+      description: Удаляет пользователя вместе со всеми его подписками (мягкое удаление на стороне сервиса).
+      operationId: deleteUser
+      responses:
+        '204':
+          description: Пользователь успешно удалён
+        '400':
+          description: Некорректный идентификатор пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректный идентификатор пользователя
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для удаления пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для удаления пользователя
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: USER_NOT_FOUND
+                  message: Пользователь не найден
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+  /subscriptions:
+    get:
+      tags:
+      - Subscriptions
+      summary: Получить список подписок на отслеживание цены
+      operationId: listSubscriptions
+      parameters:
+      - name: userId
+        in: query
+        description: Фильтр по идентификатору пользователя
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: status
+        in: query
+        description: Фильтр по статусу подписки
+        required: false
+        schema:
+          $ref: '#/components/schemas/SubscriptionStatus'
+      - name: considerTPremiumPrivileges
+        in: query
+        description: Фильтр по включённой опции учёта привилегий Т-Премиума
+        required: false
+        schema:
+          type: boolean
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - $ref: '#/components/parameters/RequestIdHeader'
+      responses:
+        '200':
+          description: Список подписок успешно получен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionListResponse'
+        '400':
+          description: Некорректные параметры запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректные параметры запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для просмотра подписок
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для просмотра подписок
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    post:
+      tags:
+      - Subscriptions
+      summary: Создать подписку на отслеживание цены
+      description: 'Создаёт подписку на маршрут. Опция considerTPremiumPrivileges доступна только пользователям
+        с активным статусом Т-Премиум/Private.
+
+        '
+      operationId: createSubscription
+      parameters:
+      - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionCreateRequest'
+      responses:
+        '201':
+          description: Подписка успешно создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Опция учёта привилегий недоступна без активного Т-Премиума
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Опция учёта привилегий недоступна без активного Т-Премиума
+        '409':
+          description: Активная подписка с таким же маршрутом и датами уже существует
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: SUBSCRIPTION_CONFLICT
+                  message: Активная подписка с таким же маршрутом и датами уже существует
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: departureDate
+                    issue: должна быть датой не раньше завтрашнего дня
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+  /subscriptions/{subscriptionId}:
+    parameters:
+    - $ref: '#/components/parameters/SubscriptionIdPath'
+    - $ref: '#/components/parameters/RequestIdHeader'
+    get:
+      tags:
+      - Subscriptions
+      summary: Получить подписку по идентификатору
+      operationId: getSubscriptionById
+      responses:
+        '200':
+          description: Подписка найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для просмотра данной подписки
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для просмотра данной подписки
+        '404':
+          description: Подписка не найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: SUBSCRIPTION_NOT_FOUND
+                  message: Подписка не найдена
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    put:
+      tags:
+      - Subscriptions
+      summary: Полностью заменить подписку
+      operationId: replaceSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionUpdateRequest'
+      responses:
+        '200':
+          description: Подписка обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '404':
+          description: Подписка не найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: SUBSCRIPTION_NOT_FOUND
+                  message: Подписка не найдена
+        '409':
+          description: Конфликт — подписка с такими параметрами уже существует у другого маршрута
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: SUBSCRIPTION_CONFLICT
+                  message: Конфликт — подписка с такими параметрами уже существует у другого маршрута
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: departureDate
+                    issue: должна быть датой не раньше завтрашнего дня
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    patch:
+      tags:
+      - Subscriptions
+      summary: Частично обновить подписку
+      description: Например, включить/выключить опцию considerTPremiumPrivileges или поставить подписку
+        на паузу.
+      operationId: updateSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionPatchRequest'
+      responses:
+        '200':
+          description: Подписка частично обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '404':
+          description: Подписка не найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: SUBSCRIPTION_NOT_FOUND
+                  message: Подписка не найдена
+        '422':
+          description: Ошибка валидации полей запроса (например, опция включена без активного Т-Премиума)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса (например, опция включена без активного Т-Премиума)
+                  details:
+                  - field: departureDate
+                    issue: должна быть датой не раньше завтрашнего дня
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    delete:
+      tags:
+      - Subscriptions
+      summary: Удалить подписку
+      operationId: deleteSubscription
+      responses:
+        '204':
+          description: Подписка успешно удалена
+        '400':
+          description: Некорректный идентификатор подписки
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректный идентификатор подписки
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для удаления данной подписки
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для удаления данной подписки
+        '404':
+          description: Подписка не найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: SUBSCRIPTION_NOT_FOUND
+                  message: Подписка не найдена
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+  /flight-offers:
+    get:
+      tags:
+      - FlightOffers
+      summary: Получить список найденных вариантов перелётов
+      description: Варианты перелётов, которые сервис нашёл по подписке (кэш цен и привилегий).
+      operationId: listFlightOffers
+      parameters:
+      - name: subscriptionId
+        in: query
+        description: Фильтр по подписке
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: minPrice
+        in: query
+        required: false
+        schema:
+          type: number
+          format: float
+      - name: maxPrice
+        in: query
+        required: false
+        schema:
+          type: number
+          format: float
+      - name: privilegesAvailable
+        in: query
+        description: Фильтр по наличию доступных привилегий Т-Премиума для варианта
+        required: false
+        schema:
+          type: boolean
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - $ref: '#/components/parameters/RequestIdHeader'
+      responses:
+        '200':
+          description: Список вариантов перелётов успешно получен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlightOfferListResponse'
+        '400':
+          description: Некорректные параметры запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректные параметры запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для просмотра вариантов перелётов
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для просмотра вариантов перелётов
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    post:
+      tags:
+      - FlightOffers
+      summary: Зарегистрировать найденный вариант перелёта
+      description: 'Используется внутренним сервисом мониторинга цен для сохранения нового варианта перелёта,
+        полученного от внешнего поставщика цен и/или T-Premium API.
+
+        '
+      operationId: createFlightOffer
+      parameters:
+      - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlightOfferCreateRequest'
+      responses:
+        '201':
+          description: Вариант перелёта успешно зарегистрирован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlightOfferResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '409':
+          description: Такой вариант перелёта на эту дату уже зарегистрирован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FLIGHT_OFFER_CONFLICT
+                  message: Такой вариант перелёта на эту дату уже зарегистрирован
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: price
+                    issue: должна быть положительным числом
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+  /flight-offers/{offerId}:
+    parameters:
+    - $ref: '#/components/parameters/OfferIdPath'
+    - $ref: '#/components/parameters/RequestIdHeader'
+    get:
+      tags:
+      - FlightOffers
+      summary: Получить вариант перелёта по идентификатору
+      operationId: getFlightOfferById
+      responses:
+        '200':
+          description: Вариант перелёта найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlightOfferResponse'
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для просмотра данного варианта перелёта
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для просмотра данного варианта перелёта
+        '404':
+          description: Вариант перелёта не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FLIGHT_OFFER_NOT_FOUND
+                  message: Вариант перелёта не найден
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    put:
+      tags:
+      - FlightOffers
+      summary: Полностью заменить вариант перелёта
+      description: Например, обновить его после повторного опроса поставщика цен.
+      operationId: replaceFlightOffer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlightOfferUpdateRequest'
+      responses:
+        '200':
+          description: Вариант перелёта обновлён
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlightOfferResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '404':
+          description: Вариант перелёта не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FLIGHT_OFFER_NOT_FOUND
+                  message: Вариант перелёта не найден
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: price
+                    issue: должна быть положительным числом
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    patch:
+      tags:
+      - FlightOffers
+      summary: Частично обновить вариант перелёта
+      description: Например, обновить только цену или количество оставшихся проходов в бизнес-залы.
+      operationId: updateFlightOffer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlightOfferPatchRequest'
+      responses:
+        '200':
+          description: Вариант перелёта частично обновлён
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlightOfferResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '404':
+          description: Вариант перелёта не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FLIGHT_OFFER_NOT_FOUND
+                  message: Вариант перелёта не найден
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: price
+                    issue: должна быть положительным числом
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    delete:
+      tags:
+      - FlightOffers
+      summary: Удалить вариант перелёта
+      description: Например, если он устарел и больше не актуален по данным поставщика цен.
+      operationId: deleteFlightOffer
+      responses:
+        '204':
+          description: Вариант перелёта успешно удалён
+        '400':
+          description: Некорректный идентификатор варианта перелёта
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректный идентификатор варианта перелёта
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для удаления
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для удаления
+        '404':
+          description: Вариант перелёта не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FLIGHT_OFFER_NOT_FOUND
+                  message: Вариант перелёта не найден
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+  /notifications:
+    get:
+      tags:
+      - Notifications
+      summary: Получить список уведомлений
+      operationId: listNotifications
+      parameters:
+      - name: userId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: subscriptionId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: type
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/NotificationType'
+      - name: status
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/NotificationStatus'
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      - $ref: '#/components/parameters/RequestIdHeader'
+      responses:
+        '200':
+          description: Список уведомлений успешно получен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationListResponse'
+        '400':
+          description: Некорректные параметры запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректные параметры запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для просмотра уведомлений
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для просмотра уведомлений
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    post:
+      tags:
+      - Notifications
+      summary: Создать уведомление
+      description: Используется внутренним сервисом при обнаружении выгодного варианта перелёта.
+      operationId: createNotification
+      parameters:
+      - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationCreateRequest'
+      responses:
+        '201':
+          description: Уведомление успешно создано и поставлено в очередь на отправку
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '409':
+          description: Аналогичное уведомление по этой подписке уже отправлено за последние 24 часа
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: NOTIFICATION_CONFLICT
+                  message: Аналогичное уведомление по этой подписке уже отправлено за последние 24 часа
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: message
+                    issue: не должно быть пустым
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+  /notifications/{notificationId}:
+    parameters:
+    - $ref: '#/components/parameters/NotificationIdPath'
+    - $ref: '#/components/parameters/RequestIdHeader'
+    get:
+      tags:
+      - Notifications
+      summary: Получить уведомление по идентификатору
+      operationId: getNotificationById
+      responses:
+        '200':
+          description: Уведомление найдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для просмотра данного уведомления
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для просмотра данного уведомления
+        '404':
+          description: Уведомление не найдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: NOTIFICATION_NOT_FOUND
+                  message: Уведомление не найдено
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    put:
+      tags:
+      - Notifications
+      summary: Полностью заменить уведомление
+      operationId: replaceNotification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationUpdateRequest'
+      responses:
+        '200':
+          description: Уведомление обновлено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '404':
+          description: Уведомление не найдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: NOTIFICATION_NOT_FOUND
+                  message: Уведомление не найдено
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: message
+                    issue: не должно быть пустым
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    patch:
+      tags:
+      - Notifications
+      summary: Частично обновить уведомление
+      description: Например, изменить статус на "delivered" или "read" после получения колбэка от push-провайдера.
+      operationId: updateNotification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationPatchRequest'
+      responses:
+        '200':
+          description: Уведомление частично обновлено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        '400':
+          description: Некорректное тело запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректное тело запроса
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '404':
+          description: Уведомление не найдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: NOTIFICATION_NOT_FOUND
+                  message: Уведомление не найдено
+        '422':
+          description: Ошибка валидации полей запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: VALIDATION_ERROR
+                  message: Ошибка валидации полей запроса
+                  details:
+                  - field: message
+                    issue: не должно быть пустым
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+    delete:
+      tags:
+      - Notifications
+      summary: Удалить уведомление
+      description: Например, отозвать ещё не отправленное уведомление, если у пользователя закончился
+        Т-Премиум.
+      operationId: deleteNotification
+      responses:
+        '204':
+          description: Уведомление успешно удалено
+        '400':
+          description: Некорректный идентификатор уведомления
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: BAD_REQUEST
+                  message: Некорректный идентификатор уведомления
+        '401':
+          description: Пользователь не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: UNAUTHORIZED
+                  message: Пользователь не авторизован
+        '403':
+          description: Недостаточно прав для удаления
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: FORBIDDEN
+                  message: Недостаточно прав для удаления
+        '404':
+          description: Уведомление не найдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: NOTIFICATION_NOT_FOUND
+                  message: Уведомление не найдено
+        '409':
+          description: Уведомление уже отправлено и не может быть удалено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: NOTIFICATION_CONFLICT
+                  message: Уведомление уже отправлено и не может быть удалено
+        '500':
+          description: Внутренняя ошибка сервера
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: INTERNAL_ERROR
+                  message: Внутренняя ошибка сервера
+components:
+  parameters:
+    RequestIdHeader:
+      name: X-Request-Id
+      in: header
+      description: Уникальный идентификатор запроса для трассировки (генерируется клиентом)
+      required: false
+      schema:
+        type: string
+        format: uuid
+    UserIdPath:
+      name: userId
+      in: path
+      description: Идентификатор пользователя
+      required: true
+      schema:
+        type: string
+        format: uuid
+    SubscriptionIdPath:
+      name: subscriptionId
+      in: path
+      description: Идентификатор подписки
+      required: true
+      schema:
+        type: string
+        format: uuid
+    OfferIdPath:
+      name: offerId
+      in: path
+      description: Идентификатор варианта перелёта
+      required: true
+      schema:
+        type: string
+        format: uuid
+    NotificationIdPath:
+      name: notificationId
+      in: path
+      description: Идентификатор уведомления
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    PaginationMeta:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 20
+        total:
+          type: integer
+          example: 134
+        totalPages:
+          type: integer
+          example: 7
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          example: VALIDATION_ERROR
+        message:
+          type: string
+          example: Поле departureDate обязательно для заполнения
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                example: departureDate
+              issue:
+                type: string
+                example: должно быть датой в будущем
+    ErrorResponse:
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+    TPremiumStatus:
+      type: string
+      enum:
+      - none
+      - t_premium
+      - private
+      description: Статус подписки клиента на привилегии Т-Банка
+    SubscriptionStatus:
+      type: string
+      enum:
+      - active
+      - paused
+      - completed
+      - cancelled
+    NotificationType:
+      type: string
+      enum:
+      - price_drop
+      - personalized_recommendation
+    NotificationStatus:
+      type: string
+      enum:
+      - queued
+      - sent
+      - delivered
+      - read
+      - failed
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        fullName:
+          type: string
+          example: Олег Иванов
+        email:
+          type: string
+          format: email
+          example: oleg.ivanov@example.com
+        phone:
+          type: string
+          example: '+79161234567'
+        tPremiumStatus:
+          $ref: '#/components/schemas/TPremiumStatus'
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:00:00Z'
+    UserCreateRequest:
+      type: object
+      required:
+      - fullName
+      - email
+      - phone
+      properties:
+        fullName:
+          type: string
+          example: Олег Иванов
+        email:
+          type: string
+          format: email
+          example: oleg.ivanov@example.com
+        phone:
+          type: string
+          example: '+79161234567'
+        tPremiumStatus:
+          $ref: '#/components/schemas/TPremiumStatus'
+    UserUpdateRequest:
+      type: object
+      required:
+      - fullName
+      - email
+      - phone
+      - tPremiumStatus
+      properties:
+        fullName:
+          type: string
+          example: Олег Иванов
+        email:
+          type: string
+          format: email
+          example: oleg.ivanov@example.com
+        phone:
+          type: string
+          example: '+79161234567'
+        tPremiumStatus:
+          $ref: '#/components/schemas/TPremiumStatus'
+    UserPatchRequest:
+      type: object
+      description: Все поля необязательны, обновляются только переданные.
+      properties:
+        fullName:
+          type: string
+          example: Олег Иванов
+        email:
+          type: string
+          format: email
+          example: oleg.ivanov@example.com
+        phone:
+          type: string
+          example: '+79161234567'
+        tPremiumStatus:
+          $ref: '#/components/schemas/TPremiumStatus'
+    UserResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    UserListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: b3f1c2d4-1111-4a2b-9c3d-556677889900
+        userId:
+          type: string
+          format: uuid
+          example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        origin:
+          type: string
+          description: Код аэропорта вылета (IATA)
+          example: MOW
+        destination:
+          type: string
+          description: Код аэропорта прилёта (IATA)
+          example: IST
+        departureDate:
+          type: string
+          format: date
+          example: '2026-07-27'
+        returnDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-09'
+        targetPrice:
+          type: number
+          format: float
+          nullable: true
+          description: Желаемая цена, при достижении которой юзер хочет получить уведомление
+          example: 18000
+        considerTPremiumPrivileges:
+          type: boolean
+          description: Включена ли опция «Учитывать привилегии Т-Премиума»
+          example: true
+        status:
+          $ref: '#/components/schemas/SubscriptionStatus'
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-08-01T09:15:00Z'
+    SubscriptionCreateRequest:
+      type: object
+      required:
+      - userId
+      - origin
+      - destination
+      - departureDate
+      properties:
+        userId:
+          type: string
+          format: uuid
+        origin:
+          type: string
+          example: MOW
+        destination:
+          type: string
+          example: IST
+        departureDate:
+          type: string
+          format: date
+          example: '2026-07-27'
+        returnDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-09'
+        targetPrice:
+          type: number
+          format: float
+          nullable: true
+          example: 18000
+        considerTPremiumPrivileges:
+          type: boolean
+          default: false
+          example: true
+    SubscriptionUpdateRequest:
+      type: object
+      required:
+      - origin
+      - destination
+      - departureDate
+      - considerTPremiumPrivileges
+      - status
+      properties:
+        origin:
+          type: string
+          example: MOW
+        destination:
+          type: string
+          example: IST
+        departureDate:
+          type: string
+          format: date
+          example: '2026-07-27'
+        returnDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-09'
+        targetPrice:
+          type: number
+          format: float
+          nullable: true
+          example: 18000
+        considerTPremiumPrivileges:
+          type: boolean
+          example: true
+        status:
+          $ref: '#/components/schemas/SubscriptionStatus'
+    SubscriptionPatchRequest:
+      type: object
+      description: Все поля необязательны, обновляются только переданные.
+      properties:
+        targetPrice:
+          type: number
+          format: float
+          nullable: true
+          example: 17500
+        considerTPremiumPrivileges:
+          type: boolean
+          example: false
+        status:
+          $ref: '#/components/schemas/SubscriptionStatus'
+    SubscriptionResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Subscription'
+    SubscriptionListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    FlightOffer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 77aa1234-5678-4abc-9def-000011112222
+        subscriptionId:
+          type: string
+          format: uuid
+        airline:
+          type: string
+          example: Turkish Airlines
+        price:
+          type: number
+          format: float
+          example: 18700
+        currency:
+          type: string
+          example: RUB
+        departureDate:
+          type: string
+          format: date
+          example: '2026-07-27'
+        returnDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-09'
+        privilegesAvailable:
+          type: boolean
+          description: Доступны ли привилегии Т-Премиума для этого варианта
+          example: true
+        loungePassesLeft:
+          type: integer
+          nullable: true
+          example: 2
+        loungePassesRenewalDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-07'
+        fetchedAt:
+          type: string
+          format: date-time
+          example: '2026-08-05T08:00:00Z'
+    FlightOfferCreateRequest:
+      type: object
+      required:
+      - subscriptionId
+      - airline
+      - price
+      - currency
+      - departureDate
+      properties:
+        subscriptionId:
+          type: string
+          format: uuid
+        airline:
+          type: string
+          example: Turkish Airlines
+        price:
+          type: number
+          format: float
+          example: 18700
+        currency:
+          type: string
+          example: RUB
+        departureDate:
+          type: string
+          format: date
+          example: '2026-07-27'
+        returnDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-09'
+        privilegesAvailable:
+          type: boolean
+          default: false
+        loungePassesLeft:
+          type: integer
+          nullable: true
+          example: 2
+        loungePassesRenewalDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-07'
+    FlightOfferUpdateRequest:
+      type: object
+      required:
+      - airline
+      - price
+      - currency
+      - departureDate
+      - privilegesAvailable
+      properties:
+        airline:
+          type: string
+          example: Turkish Airlines
+        price:
+          type: number
+          format: float
+          example: 18500
+        currency:
+          type: string
+          example: RUB
+        departureDate:
+          type: string
+          format: date
+          example: '2026-07-27'
+        returnDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-09'
+        privilegesAvailable:
+          type: boolean
+          example: true
+        loungePassesLeft:
+          type: integer
+          nullable: true
+          example: 1
+        loungePassesRenewalDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-08-07'
+    FlightOfferPatchRequest:
+      type: object
+      description: Все поля необязательны, обновляются только переданные (например, только цена).
+      properties:
+        price:
+          type: number
+          format: float
+          example: 18200
+        loungePassesLeft:
+          type: integer
+          nullable: true
+          example: 1
+    FlightOfferResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FlightOffer'
+    FlightOfferListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlightOffer'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    Notification:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 99cc4321-8765-4def-9abc-111122223333
+        userId:
+          type: string
+          format: uuid
+        subscriptionId:
+          type: string
+          format: uuid
+        offerId:
+          type: string
+          format: uuid
+          nullable: true
+        type:
+          $ref: '#/components/schemas/NotificationType'
+        message:
+          type: string
+          example: Найден выгодный вариант. Во время поездки обновятся проходы в бизнес-залы Т-Премиума.
+        status:
+          $ref: '#/components/schemas/NotificationStatus'
+        sentAt:
+          type: string
+          format: date-time
+          nullable: true
+          example: '2026-08-05T09:00:00Z'
+    NotificationCreateRequest:
+      type: object
+      required:
+      - userId
+      - subscriptionId
+      - type
+      - message
+      properties:
+        userId:
+          type: string
+          format: uuid
+        subscriptionId:
+          type: string
+          format: uuid
+        offerId:
+          type: string
+          format: uuid
+          nullable: true
+        type:
+          $ref: '#/components/schemas/NotificationType'
+        message:
+          type: string
+          example: Найден выгодный вариант. Во время поездки обновятся проходы в бизнес-залы Т-Премиума.
+    NotificationUpdateRequest:
+      type: object
+      required:
+      - type
+      - message
+      - status
+      properties:
+        type:
+          $ref: '#/components/schemas/NotificationType'
+        message:
+          type: string
+          example: Найден выгодный вариант.
+        status:
+          $ref: '#/components/schemas/NotificationStatus'
+        sentAt:
+          type: string
+          format: date-time
+          nullable: true
+    NotificationPatchRequest:
+      type: object
+      description: Все поля необязательны, обычно используется для смены статуса.
+      properties:
+        status:
+          $ref: '#/components/schemas/NotificationStatus'
+        sentAt:
+          type: string
+          format: date-time
+          nullable: true
+    NotificationResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Notification'
+    NotificationListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Notification'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+security:
+- BearerAuth: []
