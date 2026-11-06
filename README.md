@@ -142,6 +142,26 @@
 <table>
   <tr>
     <td width="46%">
+      <a href="./java/flat-collection-manager">
+        <img src="java/flat-collection-manager/assets/banner.svg?v=12" alt="Flat Manager: клиент-серверное приложение на Java с авторизацией, многопоточностью и PostgreSQL" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./java/flat-collection-manager">Flat Manager: клиент-серверное приложение на Java</a></h3>
+      <p>Клиент на NIO, сервер с пулами потоков, PostgreSQL через JDBC, регистрация и права владельца на элементы. Хранилище подставляется, поэтому логика тестируется без базы: 58 тестов, в том числе обмен по настоящему сокету. Явно перечислено, что в учебной реализации слабее продакшена (SHA-1, TCP без TLS).</p>
+      <p>
+        <img src="https://img.shields.io/badge/Java_21-E76F00?style=flat-square&logo=openjdk&logoColor=white" alt="Java">
+        <img src="https://img.shields.io/badge/Gradle-02303A?style=flat-square&logo=gradle&logoColor=white" alt="Gradle">
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+        <img src="https://img.shields.io/badge/JUnit-25A162?style=flat-square&logo=junit5&logoColor=white" alt="JUnit">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
       <a href="./data-engineering/web-scraping-goat-breeds">
         <img src="data-engineering/web-scraping-goat-breeds/assets/banner.svg?v=12" alt="Веб-скрейпинг: породы коз" width="100%">
       </a>
@@ -219,11 +239,12 @@
 | [tbank-intensive](./tbank-intensive) | Бизнес-продуктовая и системная аналитика: анализ данных, CustDev, PRD, API, A/B-тест |
 | [data-analysis](./data-analysis) | Исследование данных, сетевой анализ, визуализация |
 | [data-engineering](./data-engineering) | ETL на Spark, проектирование БД на PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
+| [java](./java) | Клиент-серверное приложение: сеть, многопоточность, JDBC, тесты |
 | [ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей |
 
 ## Инструменты
 
-<img src="assets/tools.svg?v=11" alt="Инструменты: Python, pandas, R, dplyr, ggplot2, igraph, Jupyter, scikit-learn, sktime, statsmodels, SHAP, Apache Spark, PostgreSQL, ClickHouse, MongoDB, Docker, A/B-тесты, PRD, CustDev, OpenAPI, Git" width="100%">
+<img src="assets/tools.svg?v=12" alt="Инструменты: Python, pandas, R, dplyr, ggplot2, igraph, Jupyter, scikit-learn, sktime, statsmodels, SHAP, Apache Spark, PostgreSQL, ClickHouse, MongoDB, Docker, Java, Gradle, JDBC, JUnit, A/B-тесты, PRD, CustDev, OpenAPI, Git" width="100%">
 
 ## Структура
 
@@ -235,6 +256,8 @@ projects/
 │   ├── postgresql-cave-schema/
 │   ├── postgresql-article-search/
 │   └── web-scraping-goat-breeds/
+├── java/                # приложения на Java
+│   └── flat-collection-manager/
 ├── data-analysis/       # анализ данных
 │   ├── resident-evil-network/
 │   └── movies-cleaning-clustering/

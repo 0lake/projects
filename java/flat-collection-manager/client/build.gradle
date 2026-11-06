@@ -1,0 +1,19 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation project(':common')
+
+    testImplementation project(':server')
+    testImplementation testFixtures(project(':common'))
+    testImplementation testFixtures(project(':server'))
+}
+
+application {
+    mainClass = 'flats.client.ClientMain'
+}
+
+run {
+    standardInput = System.in
+}

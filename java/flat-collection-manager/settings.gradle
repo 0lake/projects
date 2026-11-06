@@ -1,0 +1,2 @@
+rootProject.name = 'flat-collection-manager'
+include 'common', 'server', 'client'

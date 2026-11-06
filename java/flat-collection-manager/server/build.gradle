@@ -1,0 +1,16 @@
+plugins {
+    id 'application'
+    id 'java-test-fixtures'
+}
+
+dependencies {
+    implementation project(':common')
+    runtimeOnly 'org.postgresql:postgresql:42.7.4'
+
+    testFixturesApi project(':common')
+    testImplementation testFixtures(project(':common'))
+}
+
+application {
+    mainClass = 'flats.server.ServerMain'
+}

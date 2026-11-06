@@ -1,0 +1,43 @@
+name: flat-manager tests
+
+on:
+  push:
+    paths:
+      - "java/flat-collection-manager/**"
+      - ".github/workflows/flat-manager-ci.yml"
+  pull_request:
+    paths:
+      - "java/flat-collection-manager/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: flats
+          POSTGRES_PASSWORD: flats
+          POSTGRES_DB: flats
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U flats -d flats"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      TEST_DB_URL: jdbc:postgresql://localhost:5432/flats
+      TEST_DB_USER: flats
+      TEST_DB_PASSWORD: flats
+    defaults:
+      run:
+        working-directory: java/flat-collection-manager
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build and test (in-memory stores and PostgreSQL)
+        run: ./gradlew build --no-daemon

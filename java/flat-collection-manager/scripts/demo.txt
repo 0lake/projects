@@ -1,0 +1,32 @@
+# Демонстрационный скрипт: запускать после входа или регистрации,
+# например: execute_script scripts/demo.txt
+add
+Лофт у парка
+10
+-5.5
+45
+2
+3
+9.5
+good
+Северный
+1998
+4
+2
+add
+Студия на набережной
+3
+12.25
+
+1
+3
+18
+yard
+Речной
+2015
+6
+3
+show
+sum_of_height
+group_counting_by_house
+filter_starts_with_name Лофт
