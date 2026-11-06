@@ -4,9 +4,9 @@
 
 <br>
 
-[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-1a0b4d?style=flat-square&labelColor=ff4fd8&logo=telegram&logoColor=ffffff)](https://t.me/ollogi)
-[![Resume](https://img.shields.io/badge/Resume-Google%20Drive-1a0b4d?style=flat-square&labelColor=ff4fd8&logo=googledrive&logoColor=ffffff)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
-[![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-1a0b4d?style=flat-square&labelColor=ff4fd8)](https://itmo.ru)
+[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-0b6fb8?style=flat-square&labelColor=b6ff3c&logo=telegram&logoColor=ffffff)](https://t.me/ollogi)
+[![Resume](https://img.shields.io/badge/Resume-Google%20Drive-0b6fb8?style=flat-square&labelColor=b6ff3c&logo=googledrive&logoColor=031a33)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
+[![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-0b6fb8?style=flat-square&labelColor=b6ff3c)](https://itmo.ru)
 
 </div>
 
@@ -185,24 +185,24 @@
 
 ## Инструменты
 
-![Python](https://img.shields.io/badge/Python-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=python&logoColor=ffffff)
-![pandas](https://img.shields.io/badge/pandas-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=pandas&logoColor=ffffff)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=scikit-learn&logoColor=ffffff)
-![sktime](https://img.shields.io/badge/sktime-ff4fd8?style=flat-square&labelColor=1a0b4d)
-![statsmodels](https://img.shields.io/badge/statsmodels-ff4fd8?style=flat-square&labelColor=1a0b4d)
-![SHAP](https://img.shields.io/badge/SHAP-ff4fd8?style=flat-square&labelColor=1a0b4d)
-![Jupyter](https://img.shields.io/badge/Jupyter-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=jupyter&logoColor=ffffff)
-![Spark](https://img.shields.io/badge/Spark-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=apachespark&logoColor=ffffff)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=postgresql&logoColor=ffffff)
-![ClickHouse](https://img.shields.io/badge/ClickHouse-ff4fd8?style=flat-square&labelColor=1a0b4d)
-![MongoDB](https://img.shields.io/badge/MongoDB-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=mongodb&logoColor=ffffff)
-![Docker](https://img.shields.io/badge/Docker-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=docker&logoColor=ffffff)
-![R](https://img.shields.io/badge/R-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=r&logoColor=ffffff)
-![igraph](https://img.shields.io/badge/igraph-ff4fd8?style=flat-square&labelColor=1a0b4d)
-![ggplot2](https://img.shields.io/badge/ggplot2-ff4fd8?style=flat-square&labelColor=1a0b4d)
-![dplyr](https://img.shields.io/badge/dplyr-ff4fd8?style=flat-square&labelColor=1a0b4d)
-![OpenAPI](https://img.shields.io/badge/OpenAPI-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=openapiinitiative&logoColor=ffffff)
-![Git](https://img.shields.io/badge/Git-ff4fd8?style=flat-square&labelColor=1a0b4d&logo=git&logoColor=ffffff)
+![Python](https://img.shields.io/badge/Python-0b6fb8?style=flat-square&labelColor=031a33&logo=python&logoColor=ffffff)
+![pandas](https://img.shields.io/badge/pandas-0b6fb8?style=flat-square&labelColor=031a33&logo=pandas&logoColor=ffffff)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-0b6fb8?style=flat-square&labelColor=031a33&logo=scikit-learn&logoColor=ffffff)
+![sktime](https://img.shields.io/badge/sktime-0b6fb8?style=flat-square&labelColor=031a33)
+![statsmodels](https://img.shields.io/badge/statsmodels-0b6fb8?style=flat-square&labelColor=031a33)
+![SHAP](https://img.shields.io/badge/SHAP-0b6fb8?style=flat-square&labelColor=031a33)
+![Jupyter](https://img.shields.io/badge/Jupyter-0b6fb8?style=flat-square&labelColor=031a33&logo=jupyter&logoColor=ffffff)
+![Spark](https://img.shields.io/badge/Spark-0b6fb8?style=flat-square&labelColor=031a33&logo=apachespark&logoColor=ffffff)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-0b6fb8?style=flat-square&labelColor=031a33&logo=postgresql&logoColor=ffffff)
+![ClickHouse](https://img.shields.io/badge/ClickHouse-0b6fb8?style=flat-square&labelColor=031a33)
+![MongoDB](https://img.shields.io/badge/MongoDB-0b6fb8?style=flat-square&labelColor=031a33&logo=mongodb&logoColor=ffffff)
+![Docker](https://img.shields.io/badge/Docker-0b6fb8?style=flat-square&labelColor=031a33&logo=docker&logoColor=ffffff)
+![R](https://img.shields.io/badge/R-0b6fb8?style=flat-square&labelColor=031a33&logo=r&logoColor=ffffff)
+![igraph](https://img.shields.io/badge/igraph-0b6fb8?style=flat-square&labelColor=031a33)
+![ggplot2](https://img.shields.io/badge/ggplot2-0b6fb8?style=flat-square&labelColor=031a33)
+![dplyr](https://img.shields.io/badge/dplyr-0b6fb8?style=flat-square&labelColor=031a33)
+![OpenAPI](https://img.shields.io/badge/OpenAPI-0b6fb8?style=flat-square&labelColor=031a33&logo=openapiinitiative&logoColor=ffffff)
+![Git](https://img.shields.io/badge/Git-0b6fb8?style=flat-square&labelColor=031a33&logo=git&logoColor=ffffff)
 
 ## Структура
 
