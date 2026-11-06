@@ -36,3 +36,6 @@ ml/telco-churn-prediction/models/
 # Resident Evil network
 data-analysis/resident-evil-network/data/*.csv
 data-analysis/resident-evil-network/data/*.rds
+
+ml/arima-gdp-forecasting/results/run/
+ml/arima-gdp-forecasting/data/*.csv

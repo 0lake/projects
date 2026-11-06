@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arima-gdp"
+version = "1.0.0"
+description = "Comparative analysis of ARIMA-family models (ARIMA, SARIMA, AutoARIMA, ARIMAX, SARIMAX) for US GDP forecasting with sktime"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy", "pandas", "scikit-learn", "statsmodels", "sktime", "pmdarima",
+  "matplotlib", "seaborn",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+kaggle = ["kagglehub"]
+
+[project.scripts]
+arima-gdp = "arima_gdp.run:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

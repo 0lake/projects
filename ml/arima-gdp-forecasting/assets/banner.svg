@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="ARIMA family for US GDP forecasting">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#120d09"/>
+      <stop offset="1" stop-color="#271a10"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#EF4444"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="85%" cy="40%" r="55%">
+      <stop offset="0" stop-color="#F59E0B" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="320" rx="18" fill="url(#bg)"/>
+  <rect width="1280" height="320" rx="18" fill="url(#grid)"/>
+  <rect width="1280" height="320" rx="18" fill="url(#glow)"/>
+
+  <!-- forecast curves -->
+  <g transform="translate(850 70)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 150H360M0 0V180" stroke="#ffffff" stroke-opacity="0.12"/>
+    <path d="M0 110 L50 95 L100 105 L150 80 L200 90 L240 70" stroke="#c3cdd2" stroke-width="4"/>
+    <path d="M240 70 L280 20 L320 100 L360 50" stroke="#ffffff" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M240 70 L280 36 L320 92 L360 58" stroke="url(#ac)" stroke-width="5" stroke-dasharray="2 10"/>
+    <path d="M240 70 L280 80 L320 82 L360 86" stroke="#7e9098" stroke-width="3" stroke-dasharray="8 8"/>
+    <line x1="240" y1="0" x2="240" y2="150" stroke="#ffffff" stroke-opacity="0.25" stroke-dasharray="4 6"/>
+    <text x="246" y="14" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#8aa0a8" stroke="none">test</text>
+  </g>
+
+  <rect x="72" y="70" width="72" height="6" rx="3" fill="url(#ac)"/>
+  <text x="72" y="130" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#F59E0B" letter-spacing="3">TIME SERIES  ·  FORECASTING</text>
+  <text x="72" y="196" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="62" font-weight="800" fill="#ffffff" letter-spacing="-1">ARIMA vs SARIMAX</text>
+  <text x="72" y="244" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="28" font-weight="500" fill="#c3cdd2">7 models for US GDP, compared with sktime</text>
+  <text x="72" y="284" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="19" fill="#7e9098">ARIMA  ·  SARIMA  ·  AutoARIMA  ·  ARIMAX  ·  SARIMAX</text>
+</svg>

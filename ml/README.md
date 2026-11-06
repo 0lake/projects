@@ -24,4 +24,24 @@
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./arima-gdp-forecasting">
+        <img src="arima-gdp-forecasting/assets/banner.svg" alt="ARIMA vs SARIMAX" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./arima-gdp-forecasting">Семейство ARIMA: прогноз ВВП США на sktime</a></h3>
+      <p>Сравнение 7 моделей временных рядов: ARIMA, SARIMA, AutoARIMA, ARIMAX, SARIMAX и наивные базовые. Пакет с CLI, метриками, тестами и CI.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/sktime-0F6FC6?style=flat-square" alt="sktime">
+        <img src="https://img.shields.io/badge/statsmodels-4A6FA5?style=flat-square" alt="statsmodels">
+      </p>
+      <p><b>Результат:</b> SARIMAX снижает RMSE более чем вдвое по сравнению с наивным прогнозом (1,13 против 2,45), но с честными оговорками про данные.</p>
+    </td>
+  </tr>
+</table>
+
 [← Все проекты](../)

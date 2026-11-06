@@ -1,0 +1,29 @@
+name: arima-gdp tests
+
+on:
+  push:
+    paths:
+      - "ml/arima-gdp-forecasting/**"
+      - ".github/workflows/arima-gdp-ci.yml"
+  pull_request:
+    paths:
+      - "ml/arima-gdp-forecasting/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ml/arima-gdp-forecasting
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: ml/arima-gdp-forecasting/pyproject.toml
+      - run: pip install -e ".[dev]"
+      - run: pytest -q

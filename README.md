@@ -79,17 +79,39 @@
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td width="46%">
+      <a href="./ml/arima-gdp-forecasting">
+        <img src="ml/arima-gdp-forecasting/assets/banner.svg" alt="ARIMA vs SARIMAX" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./ml/arima-gdp-forecasting">Семейство ARIMA: прогноз ВВП США на sktime</a></h3>
+      <p>Экзаменационный проект ИТМО: сравнение 7 моделей временных рядов, пакет с CLI, тестами и CI.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/sktime-0F6FC6?style=flat-square" alt="sktime">
+        <img src="https://img.shields.io/badge/statsmodels-4A6FA5?style=flat-square" alt="statsmodels">
+      </p>
+      <p><b>Результат:</b> SARIMAX даёт RMSE 1,13 против 2,45 у наивного прогноза; в README разобраны ограничения данных.</p>
+    </td>
+  </tr>
+</table>
+
 | Раздел | О чем | Статус |
 |---|---|---|
 | [🏦 tbank-intensive](./tbank-intensive) | Продуктовая и системная аналитика: анализ данных, CustDev, PRD, API, A/B-тест | ✅ готово |
 | [📊 data-analysis](./data-analysis) | Исследование данных, сетевой анализ, визуализация | ✅ есть проект |
-| [🤖 ml](./ml) | Классификация, оценка и интерпретация моделей | ✅ есть проект |
+| [🤖 ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей | ✅ есть проект |
 
 ## 🧰 Инструменты
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![sktime](https://img.shields.io/badge/sktime-0F6FC6?style=for-the-badge)
+![statsmodels](https://img.shields.io/badge/statsmodels-4A6FA5?style=for-the-badge)
 ![SHAP](https://img.shields.io/badge/SHAP-0B7285?style=for-the-badge)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
@@ -108,7 +130,8 @@ projects/
 ├── data-analysis/       # анализ данных
 │   └── resident-evil-network/
 ├── ml/                  # машинное обучение
-│   └── telco-churn-prediction/
+│   ├── telco-churn-prediction/
+│   └── arima-gdp-forecasting/
 ├── _template/           # шаблон для нового проекта
 └── README.md
 ```
