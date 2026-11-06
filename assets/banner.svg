@@ -1,44 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Oleg Sadovnikov: product and data analytics">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Oleg Sadovnikov: business and product analytics, data analysis, ML">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b0f14"/>
-      <stop offset="1" stop-color="#161c28"/>
-    </linearGradient>
-    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#FFDD2D"/>
-      <stop offset="1" stop-color="#FF8A3D"/>
-    </linearGradient>
-    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#FFDD2D" stop-opacity="0.15"/>
-      <stop offset="1" stop-color="#FFDD2D" stop-opacity="0.95"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="88%" cy="15%" r="55%">
-      <stop offset="0" stop-color="#FFDD2D" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#FFDD2D" stop-opacity="0"/>
+    <radialGradient id="bg" cx="78%" cy="55%" r="85%">
+      <stop offset="0" stop-color="#2a0d14"/>
+      <stop offset="0.55" stop-color="#120708"/>
+      <stop offset="1" stop-color="#050404"/>
     </radialGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/>
-    </pattern>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c8553d" stop-opacity="0.55"/>
+      <stop offset="0.6" stop-color="#7a1f2b" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7a1f2b" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="vig" cx="50%" cy="50%" r="75%">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.65"/>
+    </radialGradient>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.93  0 0 0 0 0.86  0 0 0 0.55 -0.18"/>
+    </filter>
+    <filter id="blur"><feGaussianBlur stdDeviation="6"/></filter>
+    <clipPath id="card"><rect width="1280" height="320" rx="6"/></clipPath>
   </defs>
 
-  <rect width="1280" height="320" rx="18" fill="url(#bg)"/>
-  <rect width="1280" height="320" rx="18" fill="url(#grid)"/>
-  <rect width="1280" height="320" rx="18" fill="url(#glow)"/>
+  <g clip-path="url(#card)">
+    <rect width="1280" height="320" fill="url(#bg)"/>
 
-  <!-- decorative chart -->
-  <g transform="translate(820 60)">
-    <rect x="0"   y="150" width="44" height="50"  rx="8" fill="#ffffff" fill-opacity="0.08"/>
-    <rect x="64"  y="120" width="44" height="80"  rx="8" fill="#ffffff" fill-opacity="0.10"/>
-    <rect x="128" y="90"  width="44" height="110" rx="8" fill="#ffffff" fill-opacity="0.12"/>
-    <rect x="192" y="55"  width="44" height="145" rx="8" fill="url(#bar)"/>
-    <rect x="256" y="20"  width="44" height="180" rx="8" fill="url(#bar)"/>
-    <polyline points="22,140 86,108 150,80 214,44 278,10" fill="none" stroke="url(#ac)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="278" cy="10" r="8" fill="#FFDD2D"/>
-    <circle cx="278" cy="10" r="16" fill="#FFDD2D" fill-opacity="0.2"/>
+    <!-- setting sun behind the chart -->
+    <circle cx="1000" cy="150" r="118" fill="url(#sun)"/>
+    <g stroke="#050404" stroke-width="5" opacity="0.9">
+      <path d="M880 176H1120"/><path d="M884 196H1116"/><path d="M892 216H1108"/><path d="M906 236H1094"/>
+    </g>
+
+    <!-- hairline chart -->
+    <g transform="translate(790 40)" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="12" fill="#a99a8a">
+      <g stroke="#e8dccb" stroke-opacity="0.12" stroke-dasharray="2 5">
+        <path d="M0 60H400"/><path d="M0 120H400"/><path d="M0 180H400"/><path d="M0 240H400"/>
+      </g>
+      <path d="M0 220 C60 205 90 215 140 180 S230 150 270 120 S350 70 392 30" fill="none" stroke="#e8dccb" stroke-width="1.6" stroke-linecap="round"/>
+      <g fill="#050404" stroke="#e8dccb" stroke-width="1.3">
+        <circle cx="0" cy="220" r="3.5"/><circle cx="140" cy="180" r="3.5"/><circle cx="270" cy="120" r="3.5"/>
+      </g>
+      <circle cx="392" cy="30" r="14" fill="#c8553d" opacity="0.5" filter="url(#blur)"/>
+      <circle cx="392" cy="30" r="5" fill="#c8553d"/>
+      <text x="0" y="262">Q1</text><text x="136" y="262">Q2</text><text x="266" y="262">Q3</text><text x="380" y="262">Q4</text>
+    </g>
+
+    <rect width="1280" height="320" fill="url(#vig)"/>
+    <rect width="1280" height="320" filter="url(#grain)" opacity="0.5"/>
   </g>
 
-  <rect x="72" y="78" width="72" height="6" rx="3" fill="url(#ac)"/>
-  <text x="72" y="152" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#ffffff" letter-spacing="-1">Oleg Sadovnikov</text>
-  <text x="72" y="204" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="28" font-weight="500" fill="#c3cad5">Product analytics  ·  Data analysis  ·  ML</text>
-  <text x="72" y="248" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="20" fill="#7d8797">Business Informatics, ITMO University</text>
+  <!-- hairline frame with corner ticks -->
+  <g fill="none" stroke="#e8dccb" stroke-opacity="0.35" stroke-width="1">
+    <rect x="16.5" y="16.5" width="1247" height="287"/>
+  </g>
+  <g stroke="#c8553d" stroke-width="1.6">
+    <path d="M16 40V16H40"/><path d="M1264 280V304H1240"/>
+  </g>
+
+  <text x="76" y="86" font-family="Helvetica, Arial, sans-serif" font-size="12" letter-spacing="5" fill="#c8553d">PORTFOLIO  ·  2026</text>
+  <text x="74" y="162" font-family="Georgia, 'Times New Roman', serif" font-size="74" font-style="italic" fill="#efe6dc" letter-spacing="-1">Oleg Sadovnikov</text>
+  <path d="M76 186H300" stroke="#c8553d" stroke-width="1.2"/>
+  <text x="76" y="222" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="3.2" fill="#d9ccbc">BUSINESS &amp; PRODUCT ANALYTICS   ·   DATA ANALYSIS   ·   ML</text>
+  <text x="76" y="258" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#8f8275">Business Informatics, ITMO University</text>
 </svg>

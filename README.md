@@ -1,22 +1,22 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="Oleg Sadovnikov: product analytics, data analysis, ML" width="100%">
+<img src="assets/banner.svg" alt="Oleg Sadovnikov: business and product analytics, data analysis, ML" width="100%">
 
 <br>
 
-[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ollogi)
-[![Resume](https://img.shields.io/badge/Resume-Google%20Drive-FFDD2D?style=for-the-badge&logo=googledrive&logoColor=black)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
-[![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-0B5ED7?style=for-the-badge)](https://itmo.ru)
+[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-0b0b0c?style=flat-square&labelColor=7a1f2b&logo=telegram&logoColor=e8dccb)](https://t.me/ollogi)
+[![Resume](https://img.shields.io/badge/Resume-Google%20Drive-0b0b0c?style=flat-square&labelColor=7a1f2b&logo=googledrive&logoColor=e8dccb)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
+[![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-0b0b0c?style=flat-square&labelColor=7a1f2b)](https://itmo.ru)
 
 </div>
 
 ---
 
-## 👋 Привет, я Олег
+## Привет, я Олег 🖤
 
-Учусь на 4 курсе бизнес-информатики в Университете ИТМО. Занимаюсь продуктовой и системной аналитикой: проверяю гипотезы на данных, пишу требования, проектирую API и планирую A/B-тесты. Здесь собраны мои проекты: продуктовая аналитика и машинное обучение.
+Учусь на 4 курсе бизнес-информатики в Университете ИТМО. Я бизнес-продуктовый аналитик: смотрю на продукт через экономику бизнеса, проверяю гипотезы на данных, пишу требования, проектирую API и планирую A/B-тесты. Здесь собраны мои проекты: бизнес-продуктовая аналитика, анализ данных, инженерия данных и машинное обучение.
 
-## 🚀 Проекты
+## Проекты 🥀
 
 <table>
   <tr>
@@ -178,34 +178,33 @@
 
 | Раздел | О чем |
 |---|---|
-| [🏦 tbank-intensive](./tbank-intensive) | Продуктовая и системная аналитика: анализ данных, CustDev, PRD, API, A/B-тест |
-| [📊 data-analysis](./data-analysis) | Исследование данных, сетевой анализ, визуализация |
-| [🛠 data-engineering](./data-engineering) | ETL на Spark, PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
-| [🤖 ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей |
+| [tbank-intensive](./tbank-intensive) | Бизнес-продуктовая и системная аналитика: анализ данных, CustDev, PRD, API, A/B-тест |
+| [data-analysis](./data-analysis) | Исследование данных, сетевой анализ, визуализация |
+| [data-engineering](./data-engineering) | ETL на Spark, PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
+| [ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей |
 
-## 🧰 Инструменты
+## Инструменты 🕊️
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![sktime](https://img.shields.io/badge/sktime-0F6FC6?style=for-the-badge)
-![statsmodels](https://img.shields.io/badge/statsmodels-4A6FA5?style=for-the-badge)
-![SHAP](https://img.shields.io/badge/SHAP-0B7285?style=for-the-badge)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
-![Spark](https://img.shields.io/badge/Spark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![ClickHouse](https://img.shields.io/badge/ClickHouse-FFCC01?style=for-the-badge&logoColor=black)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
-![igraph](https://img.shields.io/badge/igraph-1F77B4?style=for-the-badge)
-![ggplot2](https://img.shields.io/badge/ggplot2-1F77B4?style=for-the-badge)
-![dplyr](https://img.shields.io/badge/dplyr-F26B21?style=for-the-badge)
-![OpenAPI](https://img.shields.io/badge/OpenAPI%203.0-6BA539?style=for-the-badge&logo=openapiinitiative&logoColor=white)
-![Markdown](https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Python](https://img.shields.io/badge/Python-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=python&logoColor=e8dccb)
+![pandas](https://img.shields.io/badge/pandas-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=pandas&logoColor=e8dccb)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=scikit-learn&logoColor=e8dccb)
+![sktime](https://img.shields.io/badge/sktime-7a1f2b?style=flat-square&labelColor=0b0b0c)
+![statsmodels](https://img.shields.io/badge/statsmodels-7a1f2b?style=flat-square&labelColor=0b0b0c)
+![SHAP](https://img.shields.io/badge/SHAP-7a1f2b?style=flat-square&labelColor=0b0b0c)
+![Jupyter](https://img.shields.io/badge/Jupyter-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=jupyter&logoColor=e8dccb)
+![Spark](https://img.shields.io/badge/Spark-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=apachespark&logoColor=e8dccb)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=postgresql&logoColor=e8dccb)
+![ClickHouse](https://img.shields.io/badge/ClickHouse-7a1f2b?style=flat-square&labelColor=0b0b0c)
+![MongoDB](https://img.shields.io/badge/MongoDB-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=mongodb&logoColor=e8dccb)
+![Docker](https://img.shields.io/badge/Docker-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=docker&logoColor=e8dccb)
+![R](https://img.shields.io/badge/R-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=r&logoColor=e8dccb)
+![igraph](https://img.shields.io/badge/igraph-7a1f2b?style=flat-square&labelColor=0b0b0c)
+![ggplot2](https://img.shields.io/badge/ggplot2-7a1f2b?style=flat-square&labelColor=0b0b0c)
+![dplyr](https://img.shields.io/badge/dplyr-7a1f2b?style=flat-square&labelColor=0b0b0c)
+![OpenAPI](https://img.shields.io/badge/OpenAPI-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=openapiinitiative&logoColor=e8dccb)
+![Git](https://img.shields.io/badge/Git-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=git&logoColor=e8dccb)
 
-## 📂 Структура
+## Структура 🤍
 
 ```text
 projects/
@@ -224,6 +223,6 @@ projects/
 └── README.md
 ```
 
-## 📬 Связаться
+## Связаться 🌹
 
 Лучше всего писать в [Telegram](https://t.me/ollogi). Резюме лежит [здесь](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl).
