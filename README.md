@@ -4,7 +4,7 @@
 
 <br>
 
-[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-0b6fb8?style=flat-square&labelColor=b6ff3c&logo=telegram&logoColor=ffffff)](https://t.me/ollogi)
+[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-0b6fb8?style=flat-square&labelColor=b6ff3c&logo=telegram&logoColor=031a33)](https://t.me/ollogi)
 [![Resume](https://img.shields.io/badge/Resume-Google%20Drive-0b6fb8?style=flat-square&labelColor=b6ff3c&logo=googledrive&logoColor=031a33)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
 [![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-0b6fb8?style=flat-square&labelColor=b6ff3c)](https://itmo.ru)
 
