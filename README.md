@@ -4,19 +4,19 @@
 
 <br>
 
-[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-0b0b0c?style=flat-square&labelColor=7a1f2b&logo=telegram&logoColor=e8dccb)](https://t.me/ollogi)
-[![Resume](https://img.shields.io/badge/Resume-Google%20Drive-0b0b0c?style=flat-square&labelColor=7a1f2b&logo=googledrive&logoColor=e8dccb)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
-[![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-0b0b0c?style=flat-square&labelColor=7a1f2b)](https://itmo.ru)
+[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-17434d?style=flat-square&labelColor=7fd8cf&logo=telegram&logoColor=17434d)](https://t.me/ollogi)
+[![Resume](https://img.shields.io/badge/Resume-Google%20Drive-17434d?style=flat-square&labelColor=7fd8cf&logo=googledrive&logoColor=17434d)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
+[![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-17434d?style=flat-square&labelColor=7fd8cf)](https://itmo.ru)
 
 </div>
 
 ---
 
-## Привет, я Олег 🖤
+## Привет, я Олег
 
 Учусь на 4 курсе бизнес-информатики в Университете ИТМО. Я бизнес-продуктовый аналитик: смотрю на продукт через экономику бизнеса, проверяю гипотезы на данных, пишу требования, проектирую API и планирую A/B-тесты. Здесь собраны мои проекты: бизнес-продуктовая аналитика, анализ данных, инженерия данных и машинное обучение.
 
-## Проекты 🥀
+## Проекты
 
 <table>
   <tr>
@@ -183,28 +183,28 @@
 | [data-engineering](./data-engineering) | ETL на Spark, PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
 | [ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей |
 
-## Инструменты 🕊️
+## Инструменты
 
-![Python](https://img.shields.io/badge/Python-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=python&logoColor=e8dccb)
-![pandas](https://img.shields.io/badge/pandas-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=pandas&logoColor=e8dccb)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=scikit-learn&logoColor=e8dccb)
-![sktime](https://img.shields.io/badge/sktime-7a1f2b?style=flat-square&labelColor=0b0b0c)
-![statsmodels](https://img.shields.io/badge/statsmodels-7a1f2b?style=flat-square&labelColor=0b0b0c)
-![SHAP](https://img.shields.io/badge/SHAP-7a1f2b?style=flat-square&labelColor=0b0b0c)
-![Jupyter](https://img.shields.io/badge/Jupyter-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=jupyter&logoColor=e8dccb)
-![Spark](https://img.shields.io/badge/Spark-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=apachespark&logoColor=e8dccb)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=postgresql&logoColor=e8dccb)
-![ClickHouse](https://img.shields.io/badge/ClickHouse-7a1f2b?style=flat-square&labelColor=0b0b0c)
-![MongoDB](https://img.shields.io/badge/MongoDB-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=mongodb&logoColor=e8dccb)
-![Docker](https://img.shields.io/badge/Docker-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=docker&logoColor=e8dccb)
-![R](https://img.shields.io/badge/R-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=r&logoColor=e8dccb)
-![igraph](https://img.shields.io/badge/igraph-7a1f2b?style=flat-square&labelColor=0b0b0c)
-![ggplot2](https://img.shields.io/badge/ggplot2-7a1f2b?style=flat-square&labelColor=0b0b0c)
-![dplyr](https://img.shields.io/badge/dplyr-7a1f2b?style=flat-square&labelColor=0b0b0c)
-![OpenAPI](https://img.shields.io/badge/OpenAPI-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=openapiinitiative&logoColor=e8dccb)
-![Git](https://img.shields.io/badge/Git-7a1f2b?style=flat-square&labelColor=0b0b0c&logo=git&logoColor=e8dccb)
+![Python](https://img.shields.io/badge/Python-7fd8cf?style=flat-square&labelColor=17434d&logo=python&logoColor=17434d)
+![pandas](https://img.shields.io/badge/pandas-7fd8cf?style=flat-square&labelColor=17434d&logo=pandas&logoColor=17434d)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-7fd8cf?style=flat-square&labelColor=17434d&logo=scikit-learn&logoColor=17434d)
+![sktime](https://img.shields.io/badge/sktime-7fd8cf?style=flat-square&labelColor=17434d)
+![statsmodels](https://img.shields.io/badge/statsmodels-7fd8cf?style=flat-square&labelColor=17434d)
+![SHAP](https://img.shields.io/badge/SHAP-7fd8cf?style=flat-square&labelColor=17434d)
+![Jupyter](https://img.shields.io/badge/Jupyter-7fd8cf?style=flat-square&labelColor=17434d&logo=jupyter&logoColor=17434d)
+![Spark](https://img.shields.io/badge/Spark-7fd8cf?style=flat-square&labelColor=17434d&logo=apachespark&logoColor=17434d)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-7fd8cf?style=flat-square&labelColor=17434d&logo=postgresql&logoColor=17434d)
+![ClickHouse](https://img.shields.io/badge/ClickHouse-7fd8cf?style=flat-square&labelColor=17434d)
+![MongoDB](https://img.shields.io/badge/MongoDB-7fd8cf?style=flat-square&labelColor=17434d&logo=mongodb&logoColor=17434d)
+![Docker](https://img.shields.io/badge/Docker-7fd8cf?style=flat-square&labelColor=17434d&logo=docker&logoColor=17434d)
+![R](https://img.shields.io/badge/R-7fd8cf?style=flat-square&labelColor=17434d&logo=r&logoColor=17434d)
+![igraph](https://img.shields.io/badge/igraph-7fd8cf?style=flat-square&labelColor=17434d)
+![ggplot2](https://img.shields.io/badge/ggplot2-7fd8cf?style=flat-square&labelColor=17434d)
+![dplyr](https://img.shields.io/badge/dplyr-7fd8cf?style=flat-square&labelColor=17434d)
+![OpenAPI](https://img.shields.io/badge/OpenAPI-7fd8cf?style=flat-square&labelColor=17434d&logo=openapiinitiative&logoColor=17434d)
+![Git](https://img.shields.io/badge/Git-7fd8cf?style=flat-square&labelColor=17434d&logo=git&logoColor=17434d)
 
-## Структура 🤍
+## Структура
 
 ```text
 projects/
@@ -223,6 +223,6 @@ projects/
 └── README.md
 ```
 
-## Связаться 🌹
+## Связаться
 
 Лучше всего писать в [Telegram](https://t.me/ollogi). Резюме лежит [здесь](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl).

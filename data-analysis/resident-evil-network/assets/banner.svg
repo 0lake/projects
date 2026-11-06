@@ -1,57 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Temporal network analysis of character co-appearances">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b0d12"/>
-      <stop offset="1" stop-color="#1a1216"/>
-    </linearGradient>
-    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#EF4444"/>
-      <stop offset="1" stop-color="#F59E0B"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="82%" cy="45%" r="50%">
-      <stop offset="0" stop-color="#EF4444" stop-opacity="0.26"/>
-      <stop offset="1" stop-color="#EF4444" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
-    </pattern>
-  </defs>
-
-  <rect width="1280" height="320" rx="18" fill="url(#bg)"/>
-  <rect width="1280" height="320" rx="18" fill="url(#grid)"/>
-  <rect width="1280" height="320" rx="18" fill="url(#glow)"/>
-
-  <!-- abstract network -->
-  <g stroke="#94a3b8" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round">
-    <line x1="1010" y1="160" x2="900" y2="95"/>
-    <line x1="1010" y1="160" x2="930" y2="235"/>
-    <line x1="1010" y1="160" x2="1110" y2="90"/>
-    <line x1="1010" y1="160" x2="1140" y2="200"/>
-    <line x1="1010" y1="160" x2="1060" y2="262"/>
-    <line x1="900" y1="95" x2="930" y2="235"/>
-    <line x1="900" y1="95" x2="840" y2="165"/>
-    <line x1="930" y1="235" x2="840" y2="165"/>
-    <line x1="1110" y1="90" x2="1140" y2="200"/>
-    <line x1="1140" y1="200" x2="1060" y2="262"/>
-    <line x1="1110" y1="90" x2="1190" y2="140"/>
-    <line x1="1190" y1="140" x2="1140" y2="200"/>
-    <line x1="1060" y1="262" x2="930" y2="235"/>
-  </g>
-  <g>
-    <circle cx="1010" cy="160" r="26" fill="url(#ac)"/>
-    <circle cx="1010" cy="160" r="40" fill="#EF4444" fill-opacity="0.15"/>
-    <circle cx="900"  cy="95"  r="15" fill="#F59E0B"/>
-    <circle cx="930"  cy="235" r="13" fill="#F59E0B"/>
-    <circle cx="1110" cy="90"  r="13" fill="#F59E0B"/>
-    <circle cx="1140" cy="200" r="17" fill="#F59E0B"/>
-    <circle cx="1060" cy="262" r="10" fill="#64748B"/>
-    <circle cx="840"  cy="165" r="10" fill="#64748B"/>
-    <circle cx="1190" cy="140" r="9"  fill="#64748B"/>
-  </g>
-
-  <rect x="72" y="70" width="72" height="6" rx="3" fill="url(#ac)"/>
-  <text x="72" y="130" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#F87171" letter-spacing="3">NETWORK ANALYSIS  ·  R</text>
-  <text x="72" y="196" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="56" font-weight="800" fill="#ffffff" letter-spacing="-1">Character Network</text>
-  <text x="72" y="244" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="28" font-weight="500" fill="#cbd0d8">how a 30-year franchise universe fragments</text>
-  <text x="72" y="284" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="19" fill="#8a8f99">12 cumulative snapshots  ·  Louvain communities  ·  centralities  ·  articulation points</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Character Network: how a 30-year franchise universe fragments">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0eefc"/><stop offset=".55" stop-color="#dbe1f7"/><stop offset="1" stop-color="#dfe6f7"/></linearGradient>
+ <radialGradient id="orbA" cx="32%" cy="28%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#c9c0f3"/><stop offset="1" stop-color="#8c9be6"/></radialGradient>
+ <radialGradient id="orbB" cx="32%" cy="28%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#8c9be6" stop-opacity=".9"/><stop offset="1" stop-color="#17434d" stop-opacity=".8"/></radialGradient>
+ <radialGradient id="bub" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#c9c0f3" stop-opacity=".35"/><stop offset="1" stop-color="#8c9be6" stop-opacity=".25"/></radialGradient>
+ <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".4" stop-color="#c9c0f3" stop-opacity=".85"/><stop offset="1" stop-color="#8c9be6" stop-opacity=".7"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+ <filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="10"/><feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 .2  0 0 0 0 .3  0 0 0 0 .35  0 0 0 .35 -.12"/></filter>
+ <clipPath id="c"><rect width="1280" height="320" rx="22"/></clipPath>
+</defs>
+<g clip-path="url(#c)">
+ <rect width="1280" height="320" fill="url(#bg)"/>
+ <circle cx="1090" cy="40" r="150" fill="#c9c0f3" fill-opacity=".55" filter="url(#blur)"/>
+ <circle cx="560" cy="330" r="140" fill="#8c9be6" fill-opacity=".3" filter="url(#blur)"/>
+ <circle cx="40" cy="20" r="110" fill="#fff" fill-opacity=".8" filter="url(#blur)"/>
+ <g fill="none" stroke="#fff" stroke-opacity=".5"><path d="M0 262C250 220 430 300 700 262S1080 220 1280 260"/><path d="M0 284C260 244 440 322 720 284S1090 244 1280 282" stroke-opacity=".35"/></g>
+ <circle cx="760" cy="80" r="16" fill="url(#bub)" stroke="#fff" stroke-opacity=".9"/>
+ <circle cx="1236" cy="250" r="26" fill="url(#bub)" stroke="#fff" stroke-opacity=".9"/>
+ <circle cx="1212" cy="52" r="9" fill="url(#bub)" stroke="#fff" stroke-opacity=".9"/>
+ <circle cx="790" cy="270" r="9" fill="url(#bub)" stroke="#fff" stroke-opacity=".9"/>
+ <g transform="translate(830 45)" filter="url(#soft)">
+  <rect width="400" height="240" rx="30" fill="url(#glass)" stroke="#fff" stroke-width="1.5"/>
+  <rect x="14" y="8" width="372" height="26" rx="13" fill="#fff" fill-opacity=".45"/>
+  <circle cx="30" cy="21" r="4" fill="#8c9be6"/><circle cx="46" cy="21" r="4" fill="#c9c0f3"/><circle cx="62" cy="21" r="4" fill="#fff"/>
+  <g transform="translate(0 6)"><path d="M90 90L150 150" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M150 150L80 190" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M90 90L200 95" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M200 95L150 150" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M150 150L230 175" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M200 95L300 120" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M300 120L350 80" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M300 120L340 180" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M340 180L290 215" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M230 175L300 120" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M230 175L290 215" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><path d="M80 190L230 175" stroke="#17434d" stroke-opacity=".45" stroke-width="1.6"/><circle cx="90" cy="90" r="9" fill="url(#orbA)" stroke="#fff" stroke-width="2"/><circle cx="150" cy="150" r="14" fill="url(#orbA)" stroke="#fff" stroke-width="2"/><circle cx="80" cy="190" r="9" fill="url(#orbA)" stroke="#fff" stroke-width="2"/><circle cx="200" cy="95" r="9" fill="url(#orbA)" stroke="#fff" stroke-width="2"/><circle cx="230" cy="175" r="14" fill="url(#orbA)" stroke="#fff" stroke-width="2"/><circle cx="300" cy="120" r="14" fill="url(#orbB)" stroke="#fff" stroke-width="2"/><circle cx="350" cy="80" r="9" fill="url(#orbB)" stroke="#fff" stroke-width="2"/><circle cx="340" cy="180" r="9" fill="url(#orbB)" stroke="#fff" stroke-width="2"/><circle cx="290" cy="215" r="9" fill="url(#orbB)" stroke="#fff" stroke-width="2"/></g>
+ </g>
+ <rect width="1280" height="320" filter="url(#grain)" opacity=".5"/>
+</g>
+<rect x=".75" y=".75" width="1278.5" height="318.5" rx="21.5" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="1.5"/>
+<rect x="72" y="62" width="259" height="26" rx="13" fill="#fff" fill-opacity=".6" stroke="#fff"/>
+<text x="86" y="80" font-family="Verdana, Tahoma, sans-serif" font-size="12" letter-spacing="2.6" fill="#17434d">NETWORK ANALYSIS  /  R</text>
+<g transform="translate(341 72)" fill="none" stroke="#17434d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><path d="M0 8H26L21 15H5Z"/><path d="M13 6V-12L26 4Z"/><path d="M10 6V-6L1 4Z"/><path d="M-6 19q5-5 10 0t10 0 10 0 10 0"/></g>
+<text x="74" y="156" font-family="'Trebuchet MS', Verdana, Tahoma, sans-serif" font-size="54" fill="#17434d" letter-spacing="-1">Character Network</text>
+<path d="M76 178q40-8 80 0t80 0 70-3" fill="none" stroke="#8c9be6" stroke-width="3" stroke-linecap="round"/>
+<g transform="translate(519 118)" stroke="#17434d" stroke-width="1.6" stroke-linecap="round" opacity=".7"><path d="M0 -10V10M-9 -5L9 5M-9 5L9 -5"/></g>
+<text x="76" y="228" font-family="Verdana, Tahoma, sans-serif" font-size="19" fill="#17434d">how a 30-year franchise universe fragments</text>
+<text x="76" y="262" font-family="Verdana, Tahoma, sans-serif" font-size="13" letter-spacing="1.6" fill="#17434d" fill-opacity=".62">12 snapshots  ·  Louvain  ·  centralities  ·  articulation points</text>
 </svg>

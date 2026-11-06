@@ -1,45 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Web scraping of a Wikipedia table">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a130e"/><stop offset="1" stop-color="#0f2218"/></linearGradient>
-    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4ADE80"/><stop offset="1" stop-color="#A3E635"/></linearGradient>
-    <radialGradient id="glow" cx="82%" cy="45%" r="55%"><stop offset="0" stop-color="#4ADE80" stop-opacity="0.20"/><stop offset="1" stop-color="#4ADE80" stop-opacity="0"/></radialGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045"/></pattern>
-    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#86a894"/></marker>
-  </defs>
-  <rect width="1280" height="320" rx="18" fill="url(#bg)"/><rect width="1280" height="320" rx="18" fill="url(#grid)"/><rect width="1280" height="320" rx="18" fill="url(#glow)"/>
-
-  <g font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" text-anchor="middle">
-    <!-- web page -->
-    <g transform="translate(800 92)">
-      <rect width="130" height="136" rx="10" fill="#14281d" stroke="#86a894" stroke-opacity="0.55"/>
-      <rect width="130" height="22" rx="10" fill="#1d3a2a"/>
-      <circle cx="14" cy="11" r="3.5" fill="#86a894"/><circle cx="27" cy="11" r="3.5" fill="#86a894"/>
-      <g fill="#86a894" fill-opacity="0.55">
-        <rect x="12" y="36" width="24" height="18" rx="3"/><rect x="44" y="40" width="74" height="4" rx="2"/><rect x="44" y="48" width="48" height="4" rx="2"/>
-        <rect x="12" y="62" width="24" height="18" rx="3"/><rect x="44" y="66" width="74" height="4" rx="2"/><rect x="44" y="74" width="56" height="4" rx="2"/>
-        <rect x="12" y="88" width="24" height="18" rx="3"/><rect x="44" y="92" width="74" height="4" rx="2"/><rect x="44" y="100" width="40" height="4" rx="2"/>
-      </g>
-      <text x="65" y="162" font-size="14" fill="#86a894">HTML</text>
-    </g>
-    <path d="M946 160H1000" stroke="#86a894" stroke-width="3" marker-end="url(#arr)"/>
-    <!-- parser -->
-    <g transform="translate(1016 118)">
-      <circle cx="42" cy="42" r="42" fill="#14281d" stroke="url(#ac)" stroke-width="3"/>
-      <text x="42" y="52" font-size="30" font-weight="800" fill="url(#ac)">&lt;/&gt;</text>
-      <text x="42" y="116" font-size="14" fill="#c8e0d0">parse</text>
-    </g>
-    <path d="M1112 160H1150" stroke="#86a894" stroke-width="3" marker-end="url(#arr)"/>
-    <!-- csv -->
-    <g transform="translate(1162 112)">
-      <rect width="62" height="96" rx="8" fill="#14281d" stroke="#A3E635" stroke-opacity="0.7"/>
-      <g stroke="#A3E635" stroke-width="3" stroke-linecap="round"><path d="M12 24H50M12 40H50M12 56H50M12 72H36"/></g>
-      <text x="31" y="122" font-size="14" fill="#c8e0d0">CSV</text>
-    </g>
-  </g>
-
-  <rect x="72" y="70" width="72" height="6" rx="3" fill="url(#ac)"/>
-  <text x="72" y="130" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#4ADE80" letter-spacing="3">DATA ENGINEERING  ·  WEB SCRAPING</text>
-  <text x="72" y="196" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="#ffffff" letter-spacing="-1">Goat Breeds Scraper</text>
-  <text x="72" y="244" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="27" font-weight="500" fill="#c3cdd2">from a Wikipedia table to clean data and a gallery</text>
-  <text x="72" y="284" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" font-size="19" fill="#7e9a8a">requests  ·  BeautifulSoup  ·  pandas  ·  pytest</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Goat Breeds Scraper: HTML table to CSV, images and a gallery">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8f6fd"/><stop offset=".55" stop-color="#cfe6f6"/><stop offset="1" stop-color="#dfe6f7"/></linearGradient>
+ <radialGradient id="orbA" cx="32%" cy="28%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#aee0f7"/><stop offset="1" stop-color="#5aa8e0"/></radialGradient>
+ <radialGradient id="orbB" cx="32%" cy="28%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#5aa8e0" stop-opacity=".9"/><stop offset="1" stop-color="#17434d" stop-opacity=".8"/></radialGradient>
+ <radialGradient id="bub" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".35" stop-color="#aee0f7" stop-opacity=".35"/><stop offset="1" stop-color="#5aa8e0" stop-opacity=".25"/></radialGradient>
+ <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".4" stop-color="#aee0f7" stop-opacity=".85"/><stop offset="1" stop-color="#5aa8e0" stop-opacity=".7"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+ <filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="10"/><feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 .2  0 0 0 0 .3  0 0 0 0 .35  0 0 0 .35 -.12"/></filter>
+ <clipPath id="c"><rect width="1280" height="320" rx="22"/></clipPath>
+</defs>
+<g clip-path="url(#c)">
+ <rect width="1280" height="320" fill="url(#bg)"/>
+ <circle cx="1090" cy="40" r="150" fill="#aee0f7" fill-opacity=".55" filter="url(#blur)"/>
+ <circle cx="560" cy="330" r="140" fill="#5aa8e0" fill-opacity=".3" filter="url(#blur)"/>
+ <circle cx="40" cy="20" r="110" fill="#fff" fill-opacity=".8" filter="url(#blur)"/>
+ <g fill="none" stroke="#fff" stroke-opacity=".5"><path d="M0 262C250 220 430 300 700 262S1080 220 1280 260"/><path d="M0 284C260 244 440 322 720 284S1090 244 1280 282" stroke-opacity=".35"/></g>
+ <circle cx="760" cy="80" r="16" fill="url(#bub)" stroke="#fff" stroke-opacity=".9"/>
+ <circle cx="1236" cy="250" r="26" fill="url(#bub)" stroke="#fff" stroke-opacity=".9"/>
+ <circle cx="1212" cy="52" r="9" fill="url(#bub)" stroke="#fff" stroke-opacity=".9"/>
+ <circle cx="790" cy="270" r="9" fill="url(#bub)" stroke="#fff" stroke-opacity=".9"/>
+ <g transform="translate(830 45)" filter="url(#soft)">
+  <rect width="400" height="240" rx="30" fill="url(#glass)" stroke="#fff" stroke-width="1.5"/>
+  <rect x="14" y="8" width="372" height="26" rx="13" fill="#fff" fill-opacity=".45"/>
+  <circle cx="30" cy="21" r="4" fill="#5aa8e0"/><circle cx="46" cy="21" r="4" fill="#aee0f7"/><circle cx="62" cy="21" r="4" fill="#fff"/>
+  <g transform="translate(0 6)"><rect x="40" y="55" width="320" height="30" rx="15" fill="#5aa8e0" fill-opacity=".55" stroke="#fff"/><rect x="40" y="100" width="320" height="26" rx="13" fill="#fff" fill-opacity=".55"/><circle cx="62" cy="113" r="8" fill="url(#orbA)" stroke="#fff"/><rect x="84" y="109" width="110" height="8" rx="4" fill="#17434d" fill-opacity=".28"/><rect x="290" y="109" width="56" height="8" rx="4" fill="#17434d" fill-opacity=".18"/><rect x="40" y="134" width="320" height="26" rx="13" fill="#fff" fill-opacity=".55"/><circle cx="62" cy="147" r="8" fill="url(#orbA)" stroke="#fff"/><rect x="84" y="143" width="147" height="8" rx="4" fill="#17434d" fill-opacity=".28"/><rect x="290" y="143" width="56" height="8" rx="4" fill="#17434d" fill-opacity=".18"/><rect x="40" y="168" width="320" height="26" rx="13" fill="#fff" fill-opacity=".55"/><circle cx="62" cy="181" r="8" fill="url(#orbA)" stroke="#fff"/><rect x="84" y="177" width="114" height="8" rx="4" fill="#17434d" fill-opacity=".28"/><rect x="290" y="177" width="56" height="8" rx="4" fill="#17434d" fill-opacity=".18"/><rect x="40" y="202" width="320" height="26" rx="13" fill="#fff" fill-opacity=".55"/><circle cx="62" cy="215" r="8" fill="url(#orbA)" stroke="#fff"/><rect x="84" y="211" width="151" height="8" rx="4" fill="#17434d" fill-opacity=".28"/><rect x="290" y="211" width="56" height="8" rx="4" fill="#17434d" fill-opacity=".18"/></g>
+ </g>
+ <rect width="1280" height="320" filter="url(#grain)" opacity=".5"/>
+</g>
+<rect x=".75" y=".75" width="1278.5" height="318.5" rx="21.5" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="1.5"/>
+<rect x="72" y="62" width="196" height="26" rx="13" fill="#fff" fill-opacity=".6" stroke="#fff"/>
+<text x="86" y="80" font-family="Verdana, Tahoma, sans-serif" font-size="12" letter-spacing="2.6" fill="#17434d">DATA ENGINEERING</text>
+<g transform="translate(278 72)" fill="none" stroke="#17434d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".75"><path d="M0 8H26L21 15H5Z"/><path d="M13 6V-12L26 4Z"/><path d="M10 6V-6L1 4Z"/><path d="M-6 19q5-5 10 0t10 0 10 0 10 0"/></g>
+<text x="74" y="156" font-family="'Trebuchet MS', Verdana, Tahoma, sans-serif" font-size="54" fill="#17434d" letter-spacing="-1">Goat Breeds Scraper</text>
+<path d="M76 178q40-8 80 0t80 0 70-3" fill="none" stroke="#5aa8e0" stroke-width="3" stroke-linecap="round"/>
+<g transform="translate(570 118)" stroke="#17434d" stroke-width="1.6" stroke-linecap="round" opacity=".7"><path d="M0 -10V10M-9 -5L9 5M-9 5L9 -5"/></g>
+<text x="76" y="228" font-family="Verdana, Tahoma, sans-serif" font-size="19" fill="#17434d">HTML table to CSV, images and a gallery</text>
+<text x="76" y="262" font-family="Verdana, Tahoma, sans-serif" font-size="13" letter-spacing="1.6" fill="#17434d" fill-opacity=".62">requests  ·  BeautifulSoup  ·  retry  ·  tests</text>
 </svg>
