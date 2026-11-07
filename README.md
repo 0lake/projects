@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="assets/banner.svg?v=12" alt="Oleg Sadovnikov: business and product analytics, data analysis, ML" width="100%">
+<img src="assets/banner.svg?v=13" alt="Oleg Sadovnikov: business and product analytics, data analysis, ML" width="100%">
 
 <br>
 
-[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-c4561f?style=flat-square&labelColor=ffc857&logo=telegram&logoColor=2a1208)](https://t.me/ollogi)
-[![Resume](https://img.shields.io/badge/Resume-Google%20Drive-c4561f?style=flat-square&labelColor=ffc857&logo=googledrive&logoColor=2a1208)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
-[![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-c4561f?style=flat-square&labelColor=ffc857)](https://itmo.ru)
+[![Telegram](https://img.shields.io/badge/Telegram-@ollogi-1f6b4a?style=flat-square&labelColor=c4f08f&logo=telegram&logoColor=06150f)](https://t.me/ollogi)
+[![Resume](https://img.shields.io/badge/Resume-Google%20Drive-1f6b4a?style=flat-square&labelColor=c4f08f&logo=googledrive&logoColor=06150f)](https://drive.google.com/drive/folders/1k8JxVXoA4IyDKNency-2qoXDov1iHgMl)
+[![ITMO](https://img.shields.io/badge/ITMO-Business%20Informatics-1f6b4a?style=flat-square&labelColor=c4f08f)](https://itmo.ru)
 
 <p align="center"><a href="#проекты"><b>Проекты</b></a> · <a href="#инструменты"><b>Инструменты</b></a> · <a href="#структура"><b>Структура</b></a> · <a href="#связаться"><b>Связаться</b></a></p>
 
@@ -287,7 +287,7 @@
 
 ## Инструменты
 
-<img src="assets/tools.svg?v=12" alt="Инструменты: Python, pandas, R, dplyr, ggplot2, igraph, Jupyter, scikit-learn, sktime, statsmodels, SHAP, Apache Spark, PostgreSQL, ClickHouse, MongoDB, Docker, Java, Gradle, JDBC, JUnit, A/B-тесты, PRD, CustDev, OpenAPI, Git" width="100%">
+<img src="assets/tools.svg?v=13" alt="Инструменты: Python, pandas, R, dplyr, ggplot2, igraph, Jupyter, scikit-learn, sktime, statsmodels, SHAP, Apache Spark, PostgreSQL, ClickHouse, MongoDB, Docker, Java, Gradle, JDBC, JUnit, A/B-тесты, PRD, CustDev, OpenAPI, Git" width="100%">
 
 ## Структура
 
