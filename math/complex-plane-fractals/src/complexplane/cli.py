@@ -13,7 +13,7 @@ from .grid import make_view
 from .newton import newton_basins, unit_roots
 from .render import render, save
 
-MODES = ["smooth", "classic", "histogram", "distance", "stripes", "trap", "shaded", "binary"]
+MODES = ["smooth", "classic", "histogram", "distance", "stripes", "trap", "shaded", "binary", "radiance"]
 
 
 def _complex(ctx, param, value: str) -> complex:  # noqa: ANN001
@@ -34,6 +34,7 @@ def _colorer(mode: str, palette: str):
         "trap": lambda o: C.orbit_trap(o, pal),
         "shaded": lambda o: C.shade(C.smooth(o, pal), o),
         "binary": lambda o: C.binary_decomposition(o),
+        "radiance": lambda o: C.radiance(o, pal, P.get("ember")),
     }[mode]
 
 

@@ -34,3 +34,12 @@ def test_matplotlib_fallback_and_unknown():
 def test_cosine_palette_formula():
     pal = P.Palette.cosine([0.5] * 3, [0.5] * 3, [1.0] * 3, [0.0, 0.33, 0.67], size=1024)
     assert np.allclose(pal(np.array([0.0]))[0], [1.0, 0.5 + 0.5 * np.cos(2 * np.pi * 0.33), 0.5 + 0.5 * np.cos(2 * np.pi * 0.67)], atol=2e-3)
+
+
+def test_radiance_inside_depth_ignores_frame_edge():
+    import numpy as np
+    from complexplane.coloring import _inside_depth
+    inside = np.ones((60, 90), dtype=bool)
+    depth = _inside_depth(inside)
+    # множество заполняет весь кадр: границы нет, глубина не должна падать к краям
+    assert depth[0, 0] > 0.5 * depth[30, 45]

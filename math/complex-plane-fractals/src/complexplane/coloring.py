@@ -143,3 +143,53 @@ def downsample(rgb: np.ndarray, factor: int) -> np.ndarray:
     h, w, c = rgb.shape
     h2, w2 = h // factor * factor, w // factor * factor
     return rgb[:h2, :w2].reshape(h2 // factor, factor, w2 // factor, factor, c).mean(axis=(1, 3))
+
+
+def _inside_depth(inside: np.ndarray, factor: int = 6, max_steps: int = 400) -> np.ndarray:
+    """Расстояние до границы внутри множества в пикселях: счётчик шагов эрозии маски в малом масштабе
+    (шаги чередуют крест и квадрат, это даёт почти евклидову метрику), затем размытие."""
+    h, w = inside.shape
+    h2, w2 = h // factor, w // factor
+    m = inside[: h2 * factor, : w2 * factor].reshape(h2, factor, w2, factor).mean(axis=(1, 3)) > 0.5
+    dist = np.zeros(m.shape)
+    cur = m.copy()
+    for step in range(max_steps):
+        if not cur.any():
+            break
+        dist += cur
+        p = np.pad(cur, 1, mode="edge")   # край кадра не считается границей множества
+        er = cur & p[:-2, 1:-1] & p[2:, 1:-1] & p[1:-1, :-2] & p[1:-1, 2:]
+        if step % 2:
+            er &= p[:-2, :-2] & p[:-2, 2:] & p[2:, :-2] & p[2:, 2:]
+        cur = er
+    dist = _blur(dist, 2) * factor
+    big = np.repeat(np.repeat(dist, factor, axis=0), factor, axis=1)
+    big = np.pad(big, ((0, h - big.shape[0]), (0, w - big.shape[1])), mode="edge")
+    return _blur(big, 2)
+
+
+def radiance(orbit: Orbit, palette: Palette, interior_palette: Palette, *, cycles: float = 0.11,
+             rim: tuple[float, float, float] = (1.0, 0.93, 0.78), rim_width: float = 5.0,
+             halo: float = 0.55, relief: float = 0.5, ring_step: float = 0.0145) -> np.ndarray:
+    """Витрина: гладкая внешность с рельефом, светящаяся кромка по оценке расстояния,
+    ореол вокруг множества и внутренность в виде светящихся изолиний вместо чёрной заливки."""
+    out = shade(smooth(orbit, palette, cycles), orbit, strength=relief)
+    pix = max(orbit.view.pixel, 1e-12)
+    d = np.where(orbit.inside, 0.0, orbit.distance.astype(float)) / pix
+    ext = ~orbit.inside
+    rim_c = np.asarray(rim)
+    core = np.exp(-d / rim_width)
+    wide = np.exp(-d / (rim_width * 14.0))
+    glow = (core[..., None] * rim_c * 0.9 + wide[..., None] * palette(np.zeros(d.shape) + 0.35) * halo)
+    out = np.where(ext[..., None], 1.0 - (1.0 - out) * (1.0 - np.clip(glow, 0, 1)), out)
+    width = orbit.view.width
+    depth = _inside_depth(orbit.inside) * orbit.view.pixel / width   # расстояние в долях ширины окна
+    t = 1.0 - np.exp(-depth / 0.07)
+    iso = 0.5 + 0.5 * np.cos(2 * np.pi * depth / ring_step)
+    iso = iso ** 3
+    inner = interior_palette(0.05 + 0.8 * t + 0.12 * iso)
+    inner = inner * (0.45 + 0.55 * iso[..., None]) * (0.5 + 0.5 * t[..., None])
+    edge = np.exp(-depth / (orbit.view.pixel * 3.0))
+    inner = 1.0 - (1.0 - inner) * (1.0 - edge[..., None] * rim_c * 0.7)
+    out = np.where(orbit.inside[..., None], inner, out)
+    return np.clip(out, 0.0, 1.0)

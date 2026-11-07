@@ -41,10 +41,14 @@ def _iters(base: int, scale: float) -> int:
 
 def hero(out: Path, scale: float = 1.0) -> Path:
     view = make_view(-0.55, 3.1, _px(1800, scale), aspect=1.5)
-    rgb = render(view, lambda o: C.shade(C.smooth(o, P.get("sunset"), cycles=0.05), o, strength=0.5),
+    rgb = render(view, lambda o: C.radiance(o, P.get("sunset"), P.get("ember"), cycles=0.11),
                  max_iter=_iters(1500, scale), supersample=2 if scale >= 0.5 else 1)
     return save(rgb, out / "mandelbrot-hero.jpg")
 
+
+# палитра внутренности, подобранная к палитре внешности
+INNER = {"ice": "ocean", "gold": "ember", "neon": "ultraviolet", "aurora": "ocean", "fire": "ultraviolet",
+         "ultraviolet": "neon", "sunset": "ember", "ocean": "aurora", "emerald": "gold"}
 
 ZOOMS = [
     ("Долина морских коньков", -0.7436447860 + 0.1318252536j, 0.0035, 2500, "ice"),
@@ -60,7 +64,7 @@ def zooms(out: Path, scale: float = 1.0) -> Path:
     tiles = []
     for _, centre, width, iters, pal in ZOOMS:
         view = make_view(centre, width, _px(900, scale), aspect=1.5)
-        tiles.append(render(view, lambda o, pal=pal: C.shade(C.smooth(o, P.get(pal), cycles=0.07, log_scale=True), o, strength=0.45),
+        tiles.append(render(view, lambda o, pal=pal: C.radiance(o, P.get(pal), P.get(INNER.get(pal, pal)), cycles=0.12),
                             max_iter=_iters(iters, scale), supersample=2 if scale >= 0.5 else 1))
     return save(mosaic(tiles, cols=2), out / "mandelbrot-zooms.jpg")
 
@@ -99,7 +103,7 @@ def julia_gallery(out: Path, scale: float = 1.0) -> Path:
     tiles = []
     for c, pal, _ in JULIA:
         view = make_view(0, 3.0, _px(720, scale), aspect=1.0)
-        tiles.append(render(view, lambda o, pal=pal: C.shade(C.smooth(o, P.get(pal), cycles=0.06), o, strength=0.4),
+        tiles.append(render(view, lambda o, pal=pal: C.radiance(o, P.get(pal), P.get(INNER.get(pal, pal)), cycles=0.10),
                             kind="julia", c=c, max_iter=_iters(900, scale), supersample=2 if scale >= 0.5 else 1))
     return save(mosaic(tiles, cols=3), out / "julia-gallery.jpg")
 
