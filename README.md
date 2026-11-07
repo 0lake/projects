@@ -287,7 +287,7 @@
 
 ## Инструменты
 
-<img src="assets/tools.svg?v=13" alt="Инструменты: Python, pandas, R, dplyr, ggplot2, igraph, Jupyter, scikit-learn, sktime, statsmodels, SHAP, Apache Spark, PostgreSQL, ClickHouse, MongoDB, Docker, Java, Gradle, JDBC, JUnit, A/B-тесты, PRD, CustDev, OpenAPI, Git" width="100%">
+<img src="assets/tools.svg?v=14" alt="Инструменты: Python, pandas, NumPy, Matplotlib, Jupyter, BeautifulSoup, R, dplyr, ggplot2, igraph, scikit-learn, sktime, statsmodels, SHAP, Apache Spark, PostgreSQL, PL/pgSQL, ClickHouse, MongoDB, Docker, Java, Gradle, JDBC, Servlets, JSF, PrimeFaces, CDI, pytest, JUnit, GitHub Actions, A/B-тесты, PRD, CustDev, OpenAPI, Git" width="100%">
 
 ## Структура
 
