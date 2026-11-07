@@ -121,6 +121,9 @@ resident-evil-network/
     <td align="center" width="160">
       <a href="https://github.com/althafchik"><img src="https://github.com/althafchik.png?size=96" width="72" height="72" alt="althafchik"><br><sub><b>@althafchik</b></sub></a>
     </td>
+    <td align="center" width="160">
+      <a href="https://github.com/jacoliks"><img src="https://github.com/jacoliks.png?size=96" width="72" height="72" alt="jacoliks"><br><sub><b>@jacoliks</b></sub></a>
+    </td>
   </tr>
 </table>
 
