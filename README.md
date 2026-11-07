@@ -184,6 +184,26 @@
 <table>
   <tr>
     <td width="46%">
+      <a href="./math/complex-plane-fractals">
+        <img src="math/complex-plane-fractals/assets/banner.svg?v=1" alt="Complex Plane: фракталы и конформные отображения на NumPy" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./math/complex-plane-fractals">Complex Plane: фракталы и конформные отображения</a></h3>
+      <p>Множества Мандельброта и Жюлиа, бассейны Ньютона и 48 способов раскраски на векторизованном NumPy, плюс конформные отображения области с разрезом по шагам. Доказательства свойств множества, 69 тестов, PDF со всеми раскрасками. Проверка нашла ошибки в исходных формулах отображений, они исправлены и закреплены тестами.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white" alt="NumPy">
+        <img src="https://img.shields.io/badge/Matplotlib-11557C?style=flat-square" alt="Matplotlib">
+        <img src="https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white" alt="pytest">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
       <a href="./data-engineering/web-scraping-goat-breeds">
         <img src="data-engineering/web-scraping-goat-breeds/assets/banner.svg?v=12" alt="Веб-скрейпинг: породы коз" width="100%">
       </a>
@@ -262,6 +282,7 @@
 | [data-analysis](./data-analysis) | Исследование данных, сетевой анализ, визуализация |
 | [data-engineering](./data-engineering) | ETL на Spark, проектирование БД на PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
 | [java](./java) | Клиент-серверное приложение и веб-приложение на двух стеках: сеть, многопоточность, JDBC, сервлеты, JSF, тесты |
+| [math](./math) | Комплексный анализ в коде: фракталы, бассейны Ньютона, конформные отображения |
 | [ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей |
 
 ## Инструменты
@@ -281,6 +302,8 @@ projects/
 ├── java/                # приложения на Java
 │   ├── flat-collection-manager/
 │   └── web-area-checker/
+├── math/                # математика в коде
+│   └── complex-plane-fractals/
 ├── data-analysis/       # анализ данных
 │   ├── resident-evil-network/
 │   └── movies-cleaning-clustering/
