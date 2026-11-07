@@ -111,4 +111,17 @@ resident-evil-network/
 - Снижение плотности частично вызвано ростом сети, а не только сюжетом.
 - Эра и порядок снимков заданы по выходу игр, а не по внутренней хронологии сюжета.
 
+## Авторы
+
+<table>
+  <tr>
+    <td align="center" width="160">
+      <a href="https://github.com/0lake"><img src="https://github.com/0lake.png?size=96" width="72" height="72" alt="0lake"><br><sub><b>@0lake</b></sub></a>
+    </td>
+    <td align="center" width="160">
+      <a href="https://github.com/althafchik"><img src="https://github.com/althafchik.png?size=96" width="72" height="72" alt="althafchik"><br><sub><b>@althafchik</b></sub></a>
+    </td>
+  </tr>
+</table>
+
 [← Анализ данных](../) · [← Все проекты](../../)
