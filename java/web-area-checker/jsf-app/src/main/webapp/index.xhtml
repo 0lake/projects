@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Area Checker</title>
+    <h:outputStylesheet name="css/app.css"/>
+</h:head>
+<h:body>
+    <main class="shell narrow">
+        <section class="card hero">
+            <h1>Area Checker</h1>
+            <p class="muted">Проверка попадания точки в область. JSF, PrimeFaces, CDI и PostgreSQL.</p>
+            <p class="clock" aria-live="off"><span id="time">--:--:--</span></p>
+            <h:link outcome="main" value="Открыть проверку" styleClass="btn"/>
+        </section>
+    </main>
+    <h:outputScript name="js/clock.js"/>
+</h:body>
+</html>

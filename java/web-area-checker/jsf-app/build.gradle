@@ -1,0 +1,16 @@
+plugins {
+    id 'war'
+}
+
+dependencies {
+    implementation project(':core')
+
+    compileOnly 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
+
+    implementation 'org.primefaces:primefaces:13.0.0:jakarta'
+    implementation 'org.postgresql:postgresql:42.7.4'
+}
+
+war {
+    archiveFileName = 'area-jsf.war'
+}

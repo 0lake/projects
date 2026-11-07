@@ -1,0 +1,49 @@
+name: web-area-checker build
+
+on:
+  push:
+    paths:
+      - "java/web-area-checker/**"
+      - ".github/workflows/web-area-checker-ci.yml"
+  pull_request:
+    paths:
+      - "java/web-area-checker/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: area
+          POSTGRES_PASSWORD: area
+          POSTGRES_DB: area
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U area -d area"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      TEST_DB_URL: jdbc:postgresql://localhost:5432/area
+      TEST_DB_USER: area
+      TEST_DB_PASSWORD: area
+    defaults:
+      run:
+        working-directory: java/web-area-checker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build both WAR files and run tests
+        run: ./gradlew build --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wars
+          path: |
+            java/web-area-checker/servlets-jsp/build/libs/*.war
+            java/web-area-checker/jsf-app/build/libs/*.war

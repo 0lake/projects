@@ -1,0 +1,28 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<c:set var="rows" value="${sessionScope.resultStore.all()}"/>
+<c:choose>
+    <c:when test="${empty rows}">
+        <p class="muted">Пока нет проверок.</p>
+    </c:when>
+    <c:otherwise>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr><th>X</th><th>Y</th><th>R</th><th>Результат</th><th>Время (UTC)</th></tr>
+                </thead>
+                <tbody>
+                <c:forEach var="row" items="${rows}">
+                    <tr>
+                        <td><c:out value="${row.x}"/></td>
+                        <td><c:out value="${row.y}"/></td>
+                        <td><c:out value="${row.r}"/></td>
+                        <td><span class="badge ${row.hit ? 'ok' : 'miss'}">${row.hit ? 'Попадание' : 'Мимо'}</span></td>
+                        <td><c:out value="${row.checkedAt}"/></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </c:otherwise>
+</c:choose>

@@ -164,6 +164,26 @@
 <table>
   <tr>
     <td width="46%">
+      <a href="./java/web-area-checker">
+        <img src="java/web-area-checker/assets/banner.svg?v=1" alt="Area Checker: одна задача проверки точки в области на двух веб-стеках" width="100%">
+      </a>
+    </td>
+    <td>
+      <h3><a href="./java/web-area-checker">Area Checker: одна задача на двух веб-стеках</a></h3>
+      <p>Проверка попадания точки в область с графиком и историей: версия на сервлетах и JSP и версия на JSF, PrimeFaces, CDI и PostgreSQL. Общее ядро без зависимостей с тестами на границах фигур, конфигурация через переменные окружения, CI собирает оба WAR-файла на живой базе.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Java_17-E76F00?style=flat-square&logo=openjdk&logoColor=white" alt="Java">
+        <img src="https://img.shields.io/badge/Jakarta_EE-6C5CE7?style=flat-square&logo=jakartaee&logoColor=white" alt="Jakarta EE">
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL">
+        <img src="https://img.shields.io/badge/Gradle-02303A?style=flat-square&logo=gradle&logoColor=white" alt="Gradle">
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="46%">
       <a href="./data-engineering/web-scraping-goat-breeds">
         <img src="data-engineering/web-scraping-goat-breeds/assets/banner.svg?v=12" alt="Веб-скрейпинг: породы коз" width="100%">
       </a>
@@ -241,7 +261,7 @@
 | [tbank-intensive](./tbank-intensive) | Бизнес-продуктовая и системная аналитика: анализ данных, CustDev, PRD, API, A/B-тест |
 | [data-analysis](./data-analysis) | Исследование данных, сетевой анализ, визуализация |
 | [data-engineering](./data-engineering) | ETL на Spark, проектирование БД на PostgreSQL, ClickHouse, MongoDB, веб-скрейпинг |
-| [java](./java) | Клиент-серверное приложение: сеть, многопоточность, JDBC, тесты |
+| [java](./java) | Клиент-серверное приложение и веб-приложение на двух стеках: сеть, многопоточность, JDBC, сервлеты, JSF, тесты |
 | [ml](./ml) | Классификация, временные ряды, оценка и интерпретация моделей |
 
 ## Инструменты
@@ -259,7 +279,8 @@ projects/
 │   ├── postgresql-article-search/
 │   └── web-scraping-goat-breeds/
 ├── java/                # приложения на Java
-│   └── flat-collection-manager/
+│   ├── flat-collection-manager/
+│   └── web-area-checker/
 ├── data-analysis/       # анализ данных
 │   ├── resident-evil-network/
 │   └── movies-cleaning-clustering/

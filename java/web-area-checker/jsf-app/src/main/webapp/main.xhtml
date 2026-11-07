@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="primefaces">
+<h:head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Проверка точки</title>
+    <h:outputStylesheet name="css/app.css"/>
+</h:head>
+<h:body>
+    <main class="shell">
+        <header class="top">
+            <h1>Проверка точки</h1>
+            <h:link outcome="index" value="На главную" styleClass="muted-link"/>
+        </header>
+
+        <div class="layout">
+            <section class="card">
+                <h2>Точка</h2>
+                <h:form id="form">
+                    <div class="field">
+                        <h:outputLabel for="x" value="X, от -3 до 3"/>
+                        <p:inputText id="x" value="#{areaBean.x}" autocomplete="off" placeholder="0"/>
+                    </div>
+
+                    <div class="field">
+                        <h:outputLabel for="y" value="Y, от -5 до 3"/>
+                        <p:inputText id="y" value="#{areaBean.y}" autocomplete="off" placeholder="0"/>
+                    </div>
+
+                    <div class="field">
+                        <span class="label">R</span>
+                        <h:selectOneRadio id="r" value="#{areaBean.r}" styleClass="radios" layout="lineDirection">
+                            <f:selectItems value="#{areaBean.radiusOptions}"/>
+                            <p:ajax event="change" oncomplete="Area.draw()"/>
+                        </h:selectOneRadio>
+                    </div>
+
+                    <p:messages id="messages" closable="false" showDetail="false"/>
+
+                    <p:commandButton id="submit" value="Проверить" action="#{areaBean.check}"
+                                     update="messages :tableForm:table" styleClass="btn"/>
+                </h:form>
+                <p class="hint">Точку можно поставить кликом по графику, когда выбран R.</p>
+            </section>
+
+            <section class="card graph-card">
+                <h2>График</h2>
+                <svg id="graph" viewBox="0 0 400 400" role="img" aria-label="График области">
+                    <g id="area-shapes"></g>
+                    <g id="axes"></g>
+                    <g id="points"></g>
+                </svg>
+            </section>
+        </div>
+
+        <section class="card">
+            <div class="row-between">
+                <h2>История</h2>
+                <h:form id="clearForm">
+                    <p:commandButton value="Очистить" action="#{areaBean.clear}" update=":tableForm:table"
+                                     styleClass="btn ghost"/>
+                </h:form>
+            </div>
+            <h:form id="tableForm">
+                <p:dataTable id="table" var="row" value="#{areaBean.history}" emptyMessage="Пока нет проверок.">
+                    <p:column headerText="X"><h:outputText value="#{row.x}"/></p:column>
+                    <p:column headerText="Y"><h:outputText value="#{row.y}"/></p:column>
+                    <p:column headerText="R"><h:outputText value="#{row.r}"/></p:column>
+                    <p:column headerText="Результат">
+                        <span class="badge #{row.hit ? 'ok' : 'miss'}">#{row.hit ? 'Попадание' : 'Мимо'}</span>
+                    </p:column>
+                    <p:column headerText="Время (UTC)"><h:outputText value="#{row.checkedAt}"/></p:column>
+                </p:dataTable>
+            </h:form>
+        </section>
+    </main>
+
+    <div id="initial-points" hidden="hidden" data-points="#{areaBean.pointsJson}"></div>
+    <h:outputScript name="js/graph.js"/>
+</h:body>
+</html>
