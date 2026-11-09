@@ -46,12 +46,12 @@ flowchart LR
 | Доля поездок дороже 30 тыс. ₽ | 7,1% | **14,8%** |
 
 <p align="center">
-  <img src="assets/charts/01-audience-share.png" width="48%" alt="Доля аудитории">
-  <img src="assets/charts/02-average-check.png" width="48%" alt="Средний чек">
+  <img src="assets/charts/01-audience-share.png?v=2" width="48%" alt="Доля аудитории">
+  <img src="assets/charts/02-average-check.png?v=2" width="48%" alt="Средний чек">
 </p>
 <p align="center">
-  <img src="assets/charts/03-price-structure.png" width="48%" alt="Структура стоимости поездок">
-  <img src="assets/charts/04-repeat-orders.png" width="48%" alt="Заказов на пользователя">
+  <img src="assets/charts/03-price-structure.png?v=2" width="48%" alt="Структура стоимости поездок">
+  <img src="assets/charts/04-repeat-orders.png?v=2" width="48%" alt="Заказов на пользователя">
 </p>
 
 Вывод: это треть аудитории, которая летает чаще и тратит больше остальных. Для неё важна не только цена, но и комфорт поездки.
@@ -95,6 +95,7 @@ flowchart LR
 | [`docs/03-intensive-workbook-days-1-9.pdf`](docs/03-intensive-workbook-days-1-9.pdf) | Рабочая тетрадь интенсива: паспорт продукта, стейкхолдеры, CustDev, бизнес-процессы, требования, формулировка проблемы, метрики и A/B-тесты |
 | [`api/openapi-t-travel-price-tracker.yaml`](api/openapi-t-travel-price-tracker.yaml) | Спецификация T-Travel Price Tracker API: пользователи, подписки, варианты перелётов, уведомления |
 | [`analysis/hypothesis_check_tpremium.R`](analysis/hypothesis_check_tpremium.R) | R-скрипт анализа |
+| [`analysis/make_charts.py`](analysis/make_charts.py) | Перерисованные графики для этого README (Python, matplotlib), значения взяты из R-анализа |
 | [`analysis/hypothesis-check-tpremium.html`](analysis/hypothesis-check-tpremium.html) | Отчёт R Markdown с кодом и графиками |
 
 Дополнительные материалы к презентации: [Google Drive](https://drive.google.com/drive/folders/1ThvW3iQJFsg4zrmpTC5gHPuur2wyKj8d?usp=sharing).
@@ -135,7 +136,7 @@ source("hypothesis_check_tpremium.R")
 tbank-intensive/
 ├── docs/        # PRD, презентация, рабочая тетрадь
 ├── api/         # OpenAPI-спецификация
-├── analysis/    # R-скрипт, отчёт, папка для данных
+├── analysis/    # R-скрипт, отчёт, графики, папка для данных
 ├── assets/      # баннер, графики, слайды
 └── README.md
 ```
