@@ -48,7 +48,7 @@
   <tr>
     <td width="46%">
       <a href="./health-insurance-rate-modeling">
-        <img src="health-insurance-rate-modeling/assets/banner.svg?v=12" alt="Тарифы медстрахования: классификация и регрессия без утечки" width="100%">
+        <img src="health-insurance-rate-modeling/assets/banner.svg?v=13" alt="Тарифы медстрахования: классификация и регрессия без утечки" width="100%">
       </a>
     </td>
     <td>
