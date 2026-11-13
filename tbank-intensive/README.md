@@ -9,7 +9,7 @@
 ![R](https://img.shields.io/badge/R-ggplot2%20%7C%20dplyr-276DC3?style=for-the-badge&logo=r&logoColor=white)
 ![A/B](https://img.shields.io/badge/A%2FB-test%20design-222222?style=for-the-badge)
 
-**[PRD](docs/01-prd-price-tracker-tpremium.pdf)** · **[Презентация](docs/02-presentation-price-tracker-tpremium.pdf)** · **[API](api/openapi-t-travel-price-tracker.yaml)** · **[Отчёт](https://htmlpreview.github.io/?https://github.com/0lake/projects/blob/main/tbank-intensive/analysis/hypothesis-check-tpremium.html)**
+**[PRD](docs/01-prd-price-tracker-tpremium.pdf)** · **[Презентация](docs/02-presentation-price-tracker-tpremium.pdf)** · **[API](api/openapi-t-travel-price-tracker.yaml)** · **[Отчёт](https://htmlpreview.github.io/?https://github.com/0lake/projects/blob/main/tbank-intensive/analysis/hypothesis-check-tpremium.html)** · **[Диплом](docs/04-diploma-t-intensive-business-analytics.pdf)**
 
 </div>
 
@@ -86,6 +86,14 @@ flowchart LR
 
 Решение: запускаем при значимом росте целевой метрики (p-value < 0,05), эффекте не меньше MDE и отсутствии значимого ухудшения guardrail-метрик.
 
+## Диплом
+
+Интенсив пройден полностью: диплом выпускника «Т-Интенсива по бизнес-аналитике» (Санкт-Петербург, 2026), выдан АНО ДПО «Т-Образование», ID сертификата 2026ТОИ_607.
+
+<p align="center">
+  <a href="docs/04-diploma-t-intensive-business-analytics.pdf"><img src="assets/diploma.jpg" alt="Диплом выпускника Т-Интенсива по бизнес-аналитике" width="70%"></a>
+</p>
+
 ## Что в репозитории
 
 | Файл | Что внутри |
@@ -93,6 +101,7 @@ flowchart LR
 | [`docs/01-prd-price-tracker-tpremium.pdf`](docs/01-prd-price-tracker-tpremium.pdf) | PRD: проблема, аудитория, стейкхолдеры, CustDev, требования, use case, критерии приёмки, метрики, A/B |
 | [`docs/02-presentation-price-tracker-tpremium.pdf`](docs/02-presentation-price-tracker-tpremium.pdf) | Презентация проекта, 16 слайдов |
 | [`docs/03-intensive-workbook-days-1-9.pdf`](docs/03-intensive-workbook-days-1-9.pdf) | Рабочая тетрадь интенсива: паспорт продукта, стейкхолдеры, CustDev, бизнес-процессы, требования, формулировка проблемы, метрики и A/B-тесты |
+| [`docs/04-diploma-t-intensive-business-analytics.pdf`](docs/04-diploma-t-intensive-business-analytics.pdf) | Диплом выпускника Т-Интенсива по бизнес-аналитике |
 | [`api/openapi-t-travel-price-tracker.yaml`](api/openapi-t-travel-price-tracker.yaml) | Спецификация T-Travel Price Tracker API: пользователи, подписки, варианты перелётов, уведомления |
 | [`analysis/hypothesis_check_tpremium.R`](analysis/hypothesis_check_tpremium.R) | R-скрипт анализа |
 | [`analysis/make_charts.py`](analysis/make_charts.py) | Перерисованные графики для этого README (Python, matplotlib), значения взяты из R-анализа |
@@ -134,10 +143,10 @@ source("hypothesis_check_tpremium.R")
 
 ```text
 tbank-intensive/
-├── docs/        # PRD, презентация, рабочая тетрадь
+├── docs/        # PRD, презентация, рабочая тетрадь, диплом
 ├── api/         # OpenAPI-спецификация
 ├── analysis/    # R-скрипт, отчёт, графики, папка для данных
-├── assets/      # баннер, графики, слайды
+├── assets/      # баннер, графики, слайды, превью диплома
 └── README.md
 ```
 
